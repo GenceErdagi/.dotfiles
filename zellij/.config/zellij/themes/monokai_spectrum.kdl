@@ -1,0 +1,15 @@
+themes {
+    monokai_spectrum {
+        fg "#f7f1ff"
+        bg "#222222"
+        black "#191919"
+        red "#fc618d"
+        green "#7bd88f"
+        yellow "#fce566"
+        blue "#5ad4e6"
+        magenta "#948ae3"
+        cyan "#5ad4e6"
+        white "#f7f1ff"
+        orange "#fd9353"
+    }
+}

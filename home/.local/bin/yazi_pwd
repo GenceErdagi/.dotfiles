@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+
+# Files to track state
+SELECTION_FILE="/tmp/yazi_selection"
+CWD_FILE="/tmp/yazi_cwd"
+
+# Initial starting path
+CURRENT_PATH="$(pwd)"
+export YAZI_ZX_ROOT="$CURRENT_PATH"
+
+while true; do
+    rm -f "$SELECTION_FILE"
+    rm -f "$CWD_FILE"
+    
+    # Run Yazi
+    yazi "$CURRENT_PATH" --chooser-file="$SELECTION_FILE" --cwd-file="$CWD_FILE"
+    
+    # Check if a file was selected
+    if [ -f "$SELECTION_FILE" ] && [ -s "$SELECTION_FILE" ]; then
+        
+        # Read all selected lines into an array
+        mapfile -t SELECTED_FILES < "$SELECTION_FILE"
+        
+        # 1. Update our persistence path
+        if [ -f "$CWD_FILE" ] && [ -s "$CWD_FILE" ]; then
+            CURRENT_PATH=$(cat "$CWD_FILE")
+        elif [ ${#SELECTED_FILES[@]} -gt 0 ]; then
+             # Fallback: Use directory of the first selected file
+            CURRENT_PATH=$(dirname "${SELECTED_FILES[0]}")
+        fi
+        
+        # 2. Open all files in Helix
+        bash /home/gence/.config/yazi/scripts/open_in_hx.sh "${SELECTED_FILES[@]}"
+        
+    else
+        break
+    fi
+done

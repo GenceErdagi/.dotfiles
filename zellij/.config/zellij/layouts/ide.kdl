@@ -1,0 +1,29 @@
+layout {
+    // ---------------------------------------------------
+    // 🎨 Template
+    // ---------------------------------------------------
+    default_tab_template {
+        children
+        pane size=1 borderless=true {
+            plugin location="zjstatus"
+        }
+    }
+
+    // ---------------------------------------------------
+    // 🚀 Initial Tab
+    // ---------------------------------------------------
+    tab focus=true {
+        pane split_direction="vertical" {
+            pane size="15%" command="env" name="Yazi" {
+                args "YAZI_IDE_SIDEBAR=1" "yazi_pwd"
+                focus true
+            }
+            pane split_direction="Horizontal" {
+                pane command="nu" name="helix" {
+                    args "-c" "hx"
+                }
+                pane name="Terminal" size="25%" // Terminal
+            }
+        }
+    }
+}

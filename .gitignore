@@ -1,0 +1,11 @@
+*.swp
+*~
+.DS_Store
+Thumbs.db
+.history.txt
+nushell/.config/nushell/history.txt
+*.log
+configstore/
+.wrangler/
+.cache/
+.hypothesis/

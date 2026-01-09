@@ -1,0 +1,38 @@
+[[mgr.prepend_keymap]]
+on   = "<Enter>"
+run  = "plugin smart-enter"
+desc = "Enter the child directory, or open the file"
+
+[[mgr.prepend_keymap]]
+on   = "l"
+run  = "plugin smart-enter"
+desc = "Enter the child directory, or open the file"
+
+[[mgr.prepend_keymap]]
+on   = "h"
+run  = "plugin workspace-guard"
+desc = "Leave directory, stopping at workspace root if set"
+
+[[mgr.prepend_keymap]]
+on   = "<Left>"
+run  = "plugin workspace-guard"
+desc = "Leave directory, stopping at workspace root if set"
+
+[[mgr.prepend_keymap]]
+on  = [ ":" ]
+run = "noop"
+
+[[mgr.prepend_keymap]]
+on  = [ ";" ]
+run = "noop"
+
+[[manager.prepend_keymap]]
+on  = ["q", "q"]
+run = "quit"
+desc = "Quit yazi (requires qq)"
+
+[[manager.prepend_keymap]]
+on  = "q"
+run = "plugin --sync workspace-guard --args quit"
+desc = "Prevent accidental quit (press qq to quit)"
+
