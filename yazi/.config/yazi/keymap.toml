@@ -19,6 +19,16 @@ run  = "plugin workspace-guard"
 desc = "Leave directory, stopping at workspace root if set"
 
 [[mgr.prepend_keymap]]
+on = "q"
+run = "plugin confirm-quit"
+desc = "Show quit confirmation"
+
+[[mgr.prepend_keymap]]
+on = "Q"
+run = "quit"
+desc = "Quit immediately"
+
+[[mgr.prepend_keymap]]
 on  = [ ":" ]
 run = "noop"
 
@@ -26,13 +36,4 @@ run = "noop"
 on  = [ ";" ]
 run = "noop"
 
-[[manager.prepend_keymap]]
-on  = ["q", "q"]
-run = "quit"
-desc = "Quit yazi (requires qq)"
-
-[[manager.prepend_keymap]]
-on  = "q"
-run = "plugin --sync workspace-guard --args quit"
-desc = "Prevent accidental quit (press qq to quit)"
 
