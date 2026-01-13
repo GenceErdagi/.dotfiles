@@ -48,13 +48,26 @@ $env.PROMPT_COMMAND = {||
         ""
     }
 
+    # 4. Node Version (New)
+    let node_seg = if ("package.json" | path exists) {
+        let v = (do { node --version } | complete | get stdout | str trim)
+        $"(ansi { fg: $monokai_pro.green attr: b }) 󰎙 ($v)(ansi reset)"
+    } else { "" }
+
+    # 5. Rust Version (New)
+    let rust_seg = if ("Cargo.toml" | path exists) {
+        let v = (do { rustc --version } | complete | get stdout | split row ' ' | get 1)
+        $"(ansi { fg: $monokai_pro.orange attr: b }) 󱘗 ($v)(ansi reset)"
+    } else { "" }
+
     # First line of the prompt
-    $"($os_segment)($user_seg)($dir_seg)($git_seg)\n"
+    $"($os_segment)($user_seg)($dir_seg)($git_seg)($node_seg)($rust_seg)\n"
 }
 
 $env.PROMPT_COMMAND_RIGHT = {||
     let exit_code = $env.LAST_EXIT_CODE
     let duration = ($env.CMD_DURATION_MS? | default 0 | into int)
+    let time = (date now | format date "%H:%M:%S")
     
     let duration_seg = if $duration > 500 {
         let dur_str = ($duration | into duration --unit ms)
@@ -63,13 +76,15 @@ $env.PROMPT_COMMAND_RIGHT = {||
         ""
     }
     
+    let time_seg = $"(ansi { fg: $monokai_pro.comment }) ($time) (ansi reset)"
+
     let exit_seg = if $exit_code != 0 {
         $"(ansi { fg: $monokai_pro.red attr: b })\u{f00d} ($exit_code)(ansi reset)"
     } else {
         $"(ansi { fg: $monokai_pro.green attr: b })\u{f00c}(ansi reset)"
     }
 
-    $"($duration_seg)($exit_seg)"
+    $"($duration_seg)($exit_seg)($time_seg)"
 }
 
 $env.PROMPT_INDICATOR = {|| $"(ansi { fg: $monokai_pro.green attr: b })❯(ansi reset) " }
@@ -77,8 +92,36 @@ $env.PROMPT_INDICATOR_VI_INSERT = {|| $"(ansi { fg: $monokai_pro.green attr: b }
 $env.PROMPT_INDICATOR_VI_NORMAL = {|| $"(ansi { fg: $monokai_pro.orange attr: b })❮(ansi reset) " }
 $env.PROMPT_MULTILINE_INDICATOR = {|| $" (ansi { fg: $monokai_pro.purple attr: b }):::(ansi reset) " }
 
+# Carapace Config (Embedded)
+$env.CARAPACE_BRIDGES = 'zsh,fish,bash,inshellisense'
+$env.PATH = ($env.PATH | split row (char esep) | where { $in != "/home/gence/.config/carapace/bin" } | prepend "/home/gence/.config/carapace/bin")
+
+def --env get-env [name] { $env | get $name }
+def --env set-env [name, value] { load-env { $name: $value } }
+def --env unset-env [name] { hide-env $name }
+
+let carapace_completer = {|spans|
+  load-env {
+    CARAPACE_SHELL_BUILTINS: (help commands | where category != "" | get name | each { split row " " | first } | uniq  | str join "\n")
+    CARAPACE_SHELL_FUNCTIONS: (help commands | where category == "" | get name | each { split row " " | first } | uniq  | str join "\n")
+  }
+  let expanded_alias = (scope aliases | where name == $spans.0 | $in.0?.expansion?)
+  let spans = (if $expanded_alias != null  {
+    $spans | skip 1 | prepend ($expanded_alias | split row " " | take 1)
+  } else {
+    $spans | skip 1 | prepend ($spans.0)
+  })
+  carapace $spans.0 nushell ...$spans | from json
+}
+
 $env.config = {
   show_banner: false,
+  completions: {
+    external: {
+      enable: true
+      completer: $carapace_completer
+    }
+  },
   shell_integration: {
     osc133: false
   },
@@ -103,31 +146,31 @@ $env.config = {
 
   keybindings: [
     {
+      name: fzf_history
+      modifier: control
+      keycode: char_r
+      mode: [emacs, vi_normal, vi_insert]
+      event: {
+        send: executehostcommand
+        cmd: "commandline (history | each { |it| $it.command } | uniq | reverse | str join (char -i 0) | fzf --read0 --layout=reverse --height=40% -q (commandline) | decode utf-8 | str trim)"
+      }
+    }
+    {
+      name: fzf_file
+      modifier: control
+      keycode: char_t
+      mode: [emacs, vi_normal, vi_insert]
+      event: {
+        send: executehostcommand
+        cmd: "commandline (fzf --layout=reverse --height=40% --preview 'bat --style=numbers --color=always --line-range :500 {}' | decode utf-8 | str trim)"
+      }
+    }
+    {
       name: repaint_prompt
       modifier: control
       keycode: char_r
       mode: [emacs vi_normal vi_insert]
       event: { send: Repaint }
-    }
-    {
-      name: completion_menu
-      modifier: none
-      keycode: tab
-      mode: [emacs vi_normal vi_insert]
-      event: {
-        until: [
-          { send: historyhintcomplete }
-          { send: menu name: completion_menu }
-          { send: menunext }
-        ]
-      }
-    }
-    {
-      name: history_menu
-      modifier: shift
-      keycode: backtab
-      mode: [emacs vi_normal vi_insert]
-      event: { send: menu name: history_menu }
     }
   ],
 
@@ -195,15 +238,39 @@ $env.config = {
 
 # Aliases from .bash_aliases
 
-# ls aliases
-alias ll = ls -al
-alias la = ls -a
-alias l = ls
+# ls aliases (using eza)
+alias ls = ^eza --icons
+alias ll = ^eza -l --icons --git -a
+alias l = ^eza --icons --git
+alias la = ^eza -a --icons --git
+alias lt = ^eza --tree --level=2 --icons
 
 # grep aliases (using external commands to preserve flags)
 alias grep = ^grep --color=auto
 alias fgrep = ^fgrep --color=auto
 alias egrep = ^egrep --color=auto
 alias zx = zellij --layout ide
+def zide [] { 
+    let plugin_path = "file:/home/gence/.dotfiles/zellij/zide-plugin/target/wasm32-wasip1/release/zide_plugin_v12.wasm"
+    
+    if "ZELLIJ" in $env {
+        zellij action start-or-reload-plugin $plugin_path
+    } else {
+        # Create a temp layout file
+        # Force a cleaner format
+        let layout_content = $"layout {
+    pane {
+        plugin location=\"($plugin_path)\"
+    }
+}"
+        let tmp_file = (mktemp -t zide_XXXXXX.kdl)
+        $layout_content | save -f $tmp_file
+        zellij --layout $tmp_file
+    }
+}
 source ~/.zoxide.nu
+
+
+
+
 

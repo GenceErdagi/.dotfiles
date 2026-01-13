@@ -9,3 +9,5 @@ configstore/
 .wrangler/
 .cache/
 .hypothesis/
+target/
+Screenshot*.png
