@@ -250,24 +250,6 @@ alias grep = ^grep --color=auto
 alias fgrep = ^fgrep --color=auto
 alias egrep = ^egrep --color=auto
 alias zx = zellij --layout ide
-def zide [] { 
-    let plugin_path = "file:/home/gence/.dotfiles/zellij/zide-plugin/target/wasm32-wasip1/release/zide_plugin_v12.wasm"
-    
-    if "ZELLIJ" in $env {
-        zellij action start-or-reload-plugin $plugin_path
-    } else {
-        # Create a temp layout file
-        # Force a cleaner format
-        let layout_content = $"layout {
-    pane {
-        plugin location=\"($plugin_path)\"
-    }
-}"
-        let tmp_file = (mktemp -t zide_XXXXXX.kdl)
-        $layout_content | save -f $tmp_file
-        zellij --layout $tmp_file
-    }
-}
 source ~/.zoxide.nu
 
 
