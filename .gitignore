@@ -12,3 +12,4 @@ configstore/
 target/
 Screenshot*.png
 *.gitconfig
+home/.gitconfig
