@@ -252,7 +252,15 @@ alias egrep = ^egrep --color=auto
 alias zx = zellij --layout ide
 source ~/.zoxide.nu
 
+def --env y [...args] {
+  let tmp = (mktemp -t "yazi-cwd.XXXXXX")
+  ^yazi ...$args --cwd-file $tmp
 
+  let cwd = (open $tmp | str trim)
 
+  if (not ($cwd | is-empty)) and ($cwd != $env.PWD) and ($cwd | path exists) {
+    cd $cwd
+  }
 
-
+  rm -f $tmp
+}
