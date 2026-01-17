@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# Use ZX-specific Yazi config
+export YAZI_CONFIG_HOME="$HOME/.config/yazi-zx"
+
 # Files to track state
 SELECTION_FILE="/tmp/yazi_selection"
 CWD_FILE="/tmp/yazi_cwd"
@@ -30,7 +33,7 @@ while true; do
         fi
         
         # 2. Open all files in Helix
-        bash /home/gence/.config/yazi/scripts/open_in_hx.sh "${SELECTED_FILES[@]}"
+        bash /home/gence/.config/yazi-zx/scripts/open_in_hx.sh "${SELECTED_FILES[@]}"
         
     else
         break

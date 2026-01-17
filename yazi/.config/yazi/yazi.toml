@@ -3,14 +3,3 @@ sort_by = "natural"
 linemode = "size"
 show_symlink = true
 show_hidden = true
-
-[opener]
-text = [
-    { run = '~/.config/yazi/scripts/open_in_hx.sh "$@"', block = false, desc = "Open in Helix via Zellij" }
-]
-
-[open]
-prepend_rules = [
-    { mime = "text/*", use = "text" },
-    { mime = "application/json", use = "text" }
-]

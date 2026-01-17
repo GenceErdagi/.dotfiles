@@ -9,26 +9,6 @@ run  = "plugin smart-enter"
 desc = "Enter the child directory, or open the file"
 
 [[mgr.prepend_keymap]]
-on   = "h"
-run  = "plugin workspace-guard"
-desc = "Leave directory, stopping at workspace root if set"
-
-[[mgr.prepend_keymap]]
-on   = "<Left>"
-run  = "plugin workspace-guard"
-desc = "Leave directory, stopping at workspace root if set"
-
-[[mgr.prepend_keymap]]
-on = "q"
-run = "plugin confirm-quit"
-desc = "Show quit confirmation"
-
-[[mgr.prepend_keymap]]
-on = "Q"
-run = "quit"
-desc = "Quit immediately"
-
-[[mgr.prepend_keymap]]
 on  = [ ":" ]
 run = "noop"
 

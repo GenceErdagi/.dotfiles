@@ -15,11 +15,11 @@ layout {
     tab focus=true {
         pane split_direction="vertical" {
             pane size="15%" command="env" name="Yazi" {
-                args "YAZI_IDE_SIDEBAR=1" "yazi_pwd"
+                args "YAZI_IDE_SIDEBAR=1" "yazi-zx"
                 focus true
             }
             pane split_direction="Horizontal" {
-                pane command="nu" name="helix" {
+                pane command="nu" name="Helix" {
                     args "-c" "hx"
                 }
                 pane name="Terminal" size="25%" // Terminal
