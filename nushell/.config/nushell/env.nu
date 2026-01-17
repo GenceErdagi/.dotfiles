@@ -1,8 +1,7 @@
 # Environment Variables
-$env.EDITOR = 'hx'
+$env.EDITOR = '/snap/bin/hx'
 $env.COLORTERM = 'xterm-256color'
 $env.BUN_INSTALL = ($env.HOME | path join ".bun")
-$env.NVM_DIR = ($env.HOME | path join ".nvm")
 
 # Path Configuration
 # We split the path to ensure we can manipulate it as a list, then prepend our new paths
