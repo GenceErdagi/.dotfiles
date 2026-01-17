@@ -11,4 +11,4 @@ configstore/
 .hypothesis/
 target/
 Screenshot*.png
-**/.gitconfig
+*.gitconfig
