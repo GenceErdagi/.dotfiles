@@ -31,41 +31,48 @@ args = ["--stdio"]
 command = "tailwindcss-language-server"
 args = ["--stdio"]
 
+[language-server.codebook]
+command = "codebook-lsp"
+args = ["serve"]
+
+
+
 [[language]]
 name = "html"
-language-servers = [ "vscode-html-language-server", "tailwindcss-ls", "emmet-ls", "scls" ]
+language-servers = [ "vscode-html-language-server", "tailwindcss-ls", "emmet-ls", "scls", "codebook" ]
 
 
 [[language]]
 name = "typescript"
 auto-format = true
-language-servers = ["typescript-language-server", "vscode-eslint-language-server", "graphql-language-service", "tailwindcss-ls"]
+language-servers = ["typescript-language-server", "vscode-eslint-language-server", "graphql-language-service", "tailwindcss-ls", "codebook"]
 formatter = { command = "prettier", args = ["--parser", "typescript"] }
 
 
 [[language]]
 name = "javascript"
 formatter = { command = "prettier", args = ["--parser", "typescript"] }
-language-servers = ["typescript-language-server", "tailwindcss-ls"]
+language-servers = ["typescript-language-server", "tailwindcss-ls", "codebook"]
 auto-format = true
 
 
 [[language]]
 name = "tsx"
 auto-format = true
-language-servers = ["typescript-language-server", "vscode-eslint-language-server", "emmet-ls", "tailwindcss-ls"]
+language-servers = ["typescript-language-server", "vscode-eslint-language-server", "emmet-ls", "tailwindcss-ls", "codebook"]
 formatter = { command = "prettier", args = ["--parser", "typescript"] }
 
 
 [[language]]
 name = "jsx"
 auto-format = true
-language-servers = ["typescript-language-server", "vscode-eslint-language-server", "emmet-ls", "tailwindcss-ls"]
+language-servers = ["typescript-language-server", "vscode-eslint-language-server", "emmet-ls", "tailwindcss-ls", "codebook"]
 formatter = { command = "prettier", args = ["--parser", "typescript"] }
 
 
 [[language]]
 name = "json"
+language-servers = ["codebook"]
 formatter = { command = "prettier", args = ["--parser", "json"] }
 
 [[language]]
@@ -74,6 +81,7 @@ language-servers = [
   "stylelint",
   "vscode-css-language-server",
   "tailwindcss-ls",
+  "codebook",
 ]
 auto-format = true
 formatter = { command = "prettier", args = ["--parser", "css"] }
@@ -84,7 +92,13 @@ file-types = ["scss"]
 language-servers = [
   "stylelint",
   { name = "vscode-css-language-server", only-features = ["completion"] },
+  "codebook",
 ]
 auto-format = true
 formatter = { command = "bash", args = ["-c", "npx stylelint --fix 2>&1 | prettier --parser css "] }
+
+# Example use in markdown:
+[[language]]
+name = "markdown"
+language-servers = ["codebook"]
 

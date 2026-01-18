@@ -1,5 +1,5 @@
 # Environment Variables
-$env.EDITOR = '/snap/bin/hx'
+$env.EDITOR = 'hx'
 $env.COLORTERM = 'xterm-256color'
 $env.BUN_INSTALL = ($env.HOME | path join ".bun")
 
