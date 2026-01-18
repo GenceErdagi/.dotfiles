@@ -16,7 +16,7 @@ run = "git"
 
 [opener]
 text = [
-    { run = '~/.config/yazi-zx/scripts/open_in_hx.sh "$@"', block = false, desc = "Open in Helix via Zellij" }
+    { run = 'nu ~/.config/nushell/open_in_hx.nu "$@"', block = false, desc = "Open in Helix via Zellij" }
 ]
 
 [open]

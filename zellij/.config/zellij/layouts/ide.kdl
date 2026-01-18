@@ -15,7 +15,7 @@ layout {
     tab focus=true {
         pane split_direction="vertical" {
             pane size="15%" command="env" name="Yazi" {
-                args "YAZI_IDE_SIDEBAR=1" "yazi-zx"
+                args "YAZI_IDE_SIDEBAR=1" "nu" "/home/gence/.config/nushell/yazi-zx.nu"
                 focus true
             }
             pane split_direction="Horizontal" {

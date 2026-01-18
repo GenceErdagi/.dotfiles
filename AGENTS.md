@@ -146,7 +146,7 @@ This launches Zellij with the `ide` layout (see `zellij/.config/zellij/layouts/i
   - `YAZI_IDE_SIDEBAR=1`: Indicates sidebar mode
 - **Persistence**: Maintains state between file selections via `/tmp/yazi_selection` and `/tmp/yazi_cwd`
 
-**yazi-zx Wrapper Script (`home/.local/bin/yazi-zx`)**
+**yazi-zx Wrapper Script (`nushell/.config/nushell/yazi-zx.nu`)**
 - **Purpose**: Runs Yazi in persistent loop for IDE mode
 - **Workflow**:
   1. Sets `YAZI_CONFIG_HOME=~/.config/yazi-zx`
@@ -216,7 +216,7 @@ Key mappings:
 tab focus=true {
     pane split_direction="vertical" {
         pane size="15%" command="env" name="Yazi" {
-            args "YAZI_IDE_SIDEBAR=1" "yazi-zx"
+            args "YAZI_IDE_SIDEBAR=1" "nu" "/home/gence/.config/nushell/yazi-zx.nu"
             focus true
         }
         pane split_direction="Horizontal" {
