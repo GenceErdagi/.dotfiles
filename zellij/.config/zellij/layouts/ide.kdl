@@ -18,7 +18,7 @@ layout {
                 args "YAZI_IDE_SIDEBAR=1" "nu" "/home/gence/.config/nushell/yazi-zx.nu"
                 focus true
             }
-            pane split_direction="Horizontal" {
+            pane split_direction="horizontal" {
                 pane command="nu" name="Helix" {
                     args "-c" "hx"
                 }
