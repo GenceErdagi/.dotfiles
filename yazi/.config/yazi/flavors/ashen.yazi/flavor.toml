@@ -1,220 +1,143 @@
-# Ashen flavor for Yazi
-# Based on the Ashen theme for Helix
-# Colors: https://github.com/helix-editor/helix/blob/master/runtime/themes/ashen.toml
+"$schema" = "https://yazi-rs.github.io/schemas/theme.json"
 
-[manager]
-# Border
-border_fg = "#535353"
-border_style = { fg = "#535353" }
+[flavor]
+dark  = "ashen"
+light = ""
 
-# Background
-cwd_fg = "#D87C4A"
+[mgr]
+cwd = { fg = "#C4693D" }
 
-# Position (file count)
-position_fg = "#737373"
+find_keyword  = { fg = "#C4693D", bold = true, italic = true, underline = true }
+find_position = { fg = "#D87C4A", bold = true, italic = true }
 
-# Tab
-tab_active_fg = "#121212"
-tab_active_bg = "#D87C4A"
-tab_active_style = { fg = "#121212", bg = "#D87C4A", bold = true }
+symlink_target = { italic = true }
 
-tab_inactive_fg = "#b4b4b4"
-tab_inactive_bg = "#1d1d1d"
-tab_inactive_style = { fg = "#b4b4b4", bg = "#1d1d1d" }
+marker_copied   = { fg = "#98971a", bg = "#98971a" }
+marker_cut      = { fg = "#cc241d", bg = "#cc241d" }
+marker_marked   = { fg = "#8be9fd", bg = "#8be9fd" }
+marker_selected = { fg = "#f1fa8c", bg = "#f1fa8c" }
 
-# File list
-file_normal_fg = "#b4b4b4"
-file_normal_style = { fg = "#b4b4b4" }
+count_copied   = { fg = "white", bg = "green" }
+count_cut      = { fg = "white", bg = "red" }
+count_selected = { fg = "black", bg = "yellow" }
 
-file_focused_fg = "#b4b4b4"
-file_focused_bg = "#322119"
-file_focused_style = { fg = "#b4b4b4", bg = "#322119", bold = true }
+border_symbol = "│"
+border_style  = { fg = "#535353" }
 
-file_selected_fg = "#121212"
-file_selected_bg = "#D87C4A"
-file_selected_style = { fg = "#121212", bg = "#D87C4A", bold = true }
+[tabs]
+active   = { bg = "#C4693D", bold = true }
+inactive = { fg = "#C4693D", bg = "#1d1d1d" }
 
-# Symlink
-symlink_fg = "#4A8B8B"
-symlink_style = { fg = "#4A8B8B" }
+sep_inner = { open = "", close = "" }
+sep_outer = { open = "", close = "" }
 
-# Directory
-directory_fg = "#B14242"
-directory_style = { fg = "#B14242", bold = true }
+[mode]
+normal_main = { bg = "#C4693D", bold = true }
+normal_alt  = { fg = "#C4693D", bg = "#1d1d1d" }
 
-# File types
-executable_fg = "#C4693D"
-executable_style = { fg = "#C4693D" }
+select_main = { bg = "#E5A72A", bold = true }
+select_alt  = { fg = "#E5A72A", bg = "#1d1d1d" }
 
-hidden_fg = "#737373"
-hidden_style = { fg = "#737373" }
+unset_main = { bg = "#C53030", bold = true }
+unset_alt  = { fg = "#C53030", bg = "#1d1d1d" }
 
-# Marker
-marker_selected_fg = "#D87C4A"
-marker_copied_fg = "#4A8B8B"
-marker_cut_fg = "#B14242"
+[indicator]
+parent  = { reversed = true }
+current = { reversed = true }
+preview = { underline = true }
+padding = { open = "", close = "" }
 
 [status]
-# Separator
-separator_fg = "#535353"
-separator_style = { fg = "#535353" }
+overall   = {}
+sep_left  = { open = "", close = "" }
+sep_right = { open = "", close = "" }
 
-# Mode
-mode_normal_fg = "#121212"
-mode_normal_bg = "#D87C4A"
-mode_normal_style = { fg = "#121212", bg = "#D87C4A", bold = true }
+perm_sep   = { fg = "#535353" }
+perm_type  = { fg = "#98971a" }
+perm_read  = { fg = "#f1fa8c" }
+perm_write = { fg = "#ff5555" }
+perm_exec  = { fg = "#8be9fd" }
 
-mode_select_fg = "#121212"
-mode_select_bg = "#E5A72A"
-mode_select_style = { fg = "#121212", bg = "#E5A72A", bold = true }
-
-mode_unset_fg = "#121212"
-mode_unset_bg = "#535353"
-mode_unset_style = { fg = "#121212", bg = "#535353", bold = true }
-
-# Progress
-progress_label_fg = "#b4b4b4"
-progress_label_style = { fg = "#b4b4b4", bold = true }
-progress_normal_fg = "#4A8B8B"
-progress_normal_style = { fg = "#4A8B8B" }
-progress_error_fg = "#C53030"
-progress_error_style = { fg = "#C53030" }
-
-[select]
-border_fg = "#535353"
-border_style = { fg = "#535353" }
-
-active_fg = "#121212"
-active_bg = "#D87C4A"
-active_style = { fg = "#121212", bg = "#D87C4A", bold = true }
-
-inactive_fg = "#b4b4b4"
-inactive_style = { fg = "#b4b4b4" }
-
-[input]
-border_fg = "#D87C4A"
-border_style = { fg = "#D87C4A" }
-
-title_fg = "#D87C4A"
-title_style = { fg = "#D87C4A", bold = true }
-
-value_fg = "#b4b4b4"
-value_style = { fg = "#b4b4b4" }
-
-selected_fg = "#121212"
-selected_bg = "#D87C4A"
-selected_style = { fg = "#121212", bg = "#D87C4A" }
-
-[completion]
-border_fg = "#535353"
-border_style = { fg = "#535353" }
-
-active_fg = "#121212"
-active_bg = "#D87C4A"
-active_style = { fg = "#121212", bg = "#D87C4A", bold = true }
-
-inactive_fg = "#b4b4b4"
-inactive_style = { fg = "#b4b4b4" }
-
-icon_folder_fg = "#B14242"
-icon_folder_style = { fg = "#B14242" }
-
-[tasks]
-border_fg = "#535353"
-border_style = { fg = "#535353" }
-
-title_fg = "#D87C4A"
-title_style = { fg = "#D87C4A", bold = true }
-
-running_fg = "#C4693D"
-running_style = { fg = "#C4693D" }
-
-success_fg = "#4A8B8B"
-success_style = { fg = "#4A8B8B" }
-
-failed_fg = "#C53030"
-failed_style = { fg = "#C53030" }
+progress_label  = { bold = true }
+progress_normal = { fg = "#98971a", bg = "#191919" }
+progress_error  = { fg = "#f1fa8c", bg = "#ff5555" }
 
 [which]
-mask_fg = "#121212"
-mask_style = { bg = "#121212" }
-
-cand_fg = "#b4b4b4"
-cand_style = { fg = "#b4b4b4" }
-
-cand_desc_fg = "#737373"
-cand_desc_style = { fg = "#737373" }
-
-separator_fg = "#535353"
+cols            = 3
+mask            = { bg = "#191919" }
+cand            = { fg = "#8be9fd" }
+rest            = { fg = "#535353" }
+desc            = { fg = "#ff79c6" }
+separator       = "  "
 separator_style = { fg = "#535353" }
 
-[help]
-onedark_fg = "#b4b4b4"
-onedark_style = { fg = "#b4b4b4" }
+[confirm]
+border     = { fg = "#4A8B8B" }
+title      = { fg = "#4A8B8B" }
+body       = {}
+list       = {}
+btn_yes    = { reversed = true }
+btn_no     = {}
+btn_labels = [ "  [Y]es  ", "  (N)o  " ]
 
-exec_fg = "#C4693D"
-exec_style = { fg = "#C4693D" }
+[spot]
+border = { fg = "#4A8B8B" }
+title  = { fg = "#4A8B8B" }
 
-desc_fg = "#737373"
-desc_style = { fg = "#737373" }
+tbl_col  = { fg = "#4A8B8B" }
+tbl_cell = { fg = "#f1fa8c", reversed = true }
 
 [notify]
-title_info_fg = "#4A8B8B"
-title_info_style = { fg = "#4A8B8B", bold = true }
+title_info  = { fg = "#98971a" }
+title_warn  = { fg = "#f1fa8c" }
+title_error = { fg = "#ff5555" }
 
-title_warn_fg = "#C4693D"
-title_warn_style = { fg = "#C4693D", bold = true }
+icon_info  = ""
+icon_warn  = ""
+icon_error = ""
 
-title_error_fg = "#C53030"
-title_error_style = { fg = "#C53030", bold = true }
+[pick]
+border   = { fg = "#4A8B8B" }
+active   = { fg = "#ff79c6", bold = true }
+inactive = {}
 
-msg_fg = "#b4b4b4"
-msg_style = { fg = "#b4b4b4" }
+[input]
+border   = { fg = "#4A8B8B" }
+title    = {}
+value    = {}
+selected = { reversed = true }
+
+[cmp]
+border   = { fg = "#4A8B8B" }
+active   = { reversed = true }
+inactive = {}
+
+icon_file    = ""
+icon_folder  = ""
+icon_command = ""
+
+[tasks]
+border  = { fg = "#4A8B8B" }
+title   = {}
+hovered = { fg = "#ff79c6", bold = true }
+
+[help]
+on      = { fg = "#8be9fd" }
+run     = { fg = "#ff79c6" }
+desc    = {}
+hovered = { reversed = true, bold = true }
+footer  = { fg = "#191919", bg = "#f8f8f2" }
 
 [filetype]
 rules = [
-	# Documents
-	{ mime = "application/pdf", fg = "#C53030", bold = true },
-	{ mime = "application/zip", fg = "#E5A72A", bold = true },
-	{ mime = "application/gzip", fg = "#E5A72A", bold = true },
-	{ mime = "application/x-tar", fg = "#E5A72A", bold = true },
-	
-	# Images
-	{ mime = "image/*", fg = "#4A8B8B" },
-	
-	# Videos
-	{ mime = "video/*", fg = "#C4693D" },
-	
-	# Audio
-	{ mime = "audio/*", fg = "#948ae3" },
-	
-	# Source code
-	{ mime = "text/*", fg = "#b4b4b4" },
-	{ mime = "application/json", fg = "#b4b4b4" },
-	
-	# Others
-	{ name = "*.md", fg = "#e5e5e5", bold = true },
-	{ name = "*.toml", fg = "#C4693D" },
-	{ name = "*.yaml", fg = "#C4693D" },
-	{ name = "*.yml", fg = "#C4693D" },
-	{ name = "*.lock", fg = "#737373" },
-	
-	# Hidden files
-	{ name = ".*", fg = "#737373" },
-]
-
-[icon]
-prepend_rules = [
-	{ name = ".git", text = "󰊢", fg = "#C4693D" },
-	{ name = ".gitignore", text = "󰊢", fg = "#737373" },
-	{ name = "node_modules", text = "󰎙", fg = "#4A8B8B" },
-	{ name = "Cargo.toml", text = "󱘗", fg = "#C4693D" },
-	{ name = "Cargo.lock", text = "󱘗", fg = "#737373" },
-	{ name = "package.json", text = "󰎙", fg = "#4A8B8B" },
-	{ name = "*.rs", text = "󱘗", fg = "#C4693D" },
-	{ name = "*.py", text = "󰌠", fg = "#E5A72A" },
-	{ name = "*.js", text = "󰌞", fg = "#E5A72A" },
-	{ name = "*.ts", text = "󰛦", fg = "#4A8B8B" },
-	{ name = "*.go", text = "󰟓", fg = "#4A8B8B" },
-	{ name = "*.md", text = "󰍔", fg = "#e5e5e5" },
+	{ mime = "image/*", fg = "#f1fa8c" },
+	{ mime = "{audio,video}/*", fg = "#ff79c6" },
+	{ mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", fg = "#ff5555" },
+	{ mime = "application/{pdf,doc,rtf}", fg = "#8be9fd" },
+	{ mime = "vfs/{absent,stale}", fg = "#6272a4" },
+	{ url = "*", is = "orphan", fg = "white", bg = "red" },
+	{ url = "*", is = "exec"  , fg = "#50fa7b" },
+	{ url = "*", is = "dummy", bg = "red" },
+	{ url = "*/", is = "dummy", bg = "red" },
+	{ url = "*/", fg = "#4A8B8B" }
 ]

@@ -1,51 +1,42 @@
--- Confirm Quit Plugin
--- Press 'q' once to show confirmation, press 'q' again within 3 seconds to quit
-
-local STATE_FILE = "/tmp/yazi_confirm_quit_state"
+local state_file = os.getenv("HOME") .. "/.cache/yazi-confirm-quit.state"
 
 local function read_state()
-	local f = io.open(STATE_FILE, "r")
-	if f then
-		local time = tonumber(f:read("*l"))
-		f:close()
-		return time
+	local f = io.open(state_file, "r")
+	if not f then
+		return nil
 	end
-	return nil
+	local content = f:read("*a")
+	f:close()
+	return tonumber(content)
 end
 
 local function write_state(time)
-	local f = io.open(STATE_FILE, "w")
+	local f = io.open(state_file, "w")
 	if f then
-		f:write(tostring(time) .. "\n")
+		f:write(tostring(time))
 		f:close()
 	end
-end
-
-local function clear_state()
-	os.remove(STATE_FILE)
 end
 
 local function entry()
 	local now = os.time()
 	local last_time = read_state()
-	
-	-- Check if we're in confirmation mode (within 3 seconds)
-	if last_time and (now - last_time) <= 3 then
-		-- Second press - actually quit
-		clear_state()
+
+	-- If last press was within 3 seconds, actually quit
+	if last_time and (now - last_time) < 3 then
+		os.remove(state_file)
 		ya.emit("quit", {})
-	else
-		-- First press - show confirmation and set state
-		ya.notify({
-			title = "Quit Confirmation",
-			content = "Press 'q' again to quit Yazi",
-			timeout = 3,
-			level = "info",
-		})
-		
-		-- Store state for next keypress
-		write_state(now)
+		return
 	end
+
+	-- Otherwise, show notification and record time
+	write_state(now)
+	ya.notify({
+		title = "Quit Confirmation",
+		content = "Press 'q' again within 3s to quit Yazi",
+		timeout = 3,
+		level = "info",
+	})
 end
 
 return { entry = entry }
