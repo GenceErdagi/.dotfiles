@@ -1,0 +1,234 @@
+{
+  "$schema": "https://opencode.ai/theme.json",
+  "defs": {
+    "red_flame": "#C53030",
+    "red_glowing": "#DF6464",
+    "red_ember": "#B14242",
+    "orange_glow": "#D87C4A",
+    "orange_blaze": "#C4693D",
+    "orange_muted": "#6D3B22",
+    "orange_smolder": "#E49A44",
+    "orange_golden": "#E5A72A",
+    "golden_muted": "#6D4D0D",
+    "brown": "#89492a",
+    "brown_dark": "#322119",
+    "blue": "#4A8B8B",
+    "green": "#7bd88f",
+    "background": "#121212",
+    "text": "#b4b4b4",
+    "g_1": "#e5e5e5",
+    "g_2": "#d5d5d5",
+    "g_3": "#b4b4b4",
+    "g_4": "#a7a7a7",
+    "g_5": "#949494",
+    "g_6": "#737373",
+    "g_7": "#535353",
+    "g_8": "#323232",
+    "g_9": "#212121",
+    "g_10": "#1d1d1d",
+    "g_11": "#191919",
+    "g_12": "#151515"
+  },
+  "theme": {
+    "primary": {
+      "dark": "orange_blaze",
+      "light": "orange_blaze"
+    },
+    "secondary": {
+      "dark": "blue",
+      "light": "blue"
+    },
+    "accent": {
+      "dark": "orange_glow",
+      "light": "orange_glow"
+    },
+    "error": {
+      "dark": "red_flame",
+      "light": "red_flame"
+    },
+    "warning": {
+      "dark": "orange_golden",
+      "light": "orange_golden"
+    },
+    "success": {
+      "dark": "green",
+      "light": "green"
+    },
+    "info": {
+      "dark": "blue",
+      "light": "blue"
+    },
+    "text": {
+      "dark": "text",
+      "light": "g_3"
+    },
+    "textMuted": {
+      "dark": "g_5",
+      "light": "g_5"
+    },
+    "background": {
+      "dark": "background",
+      "light": "g_1"
+    },
+    "backgroundPanel": {
+      "dark": "g_10",
+      "light": "g_9"
+    },
+    "backgroundElement": {
+      "dark": "g_10",
+      "light": "g_8"
+    },
+    "border": {
+      "dark": "g_7",
+      "light": "g_5"
+    },
+    "borderActive": {
+      "dark": "orange_blaze",
+      "light": "orange_blaze"
+    },
+    "borderSubtle": {
+      "dark": "g_8",
+      "light": "g_6"
+    },
+    "diffAdded": {
+      "dark": "green",
+      "light": "green"
+    },
+    "diffRemoved": {
+      "dark": "red_ember",
+      "light": "red_ember"
+    },
+    "diffContext": {
+      "dark": "g_6",
+      "light": "g_5"
+    },
+    "diffHunkHeader": {
+      "dark": "g_6",
+      "light": "g_5"
+    },
+    "diffHighlightAdded": {
+      "dark": "green",
+      "light": "green"
+    },
+    "diffHighlightRemoved": {
+      "dark": "red_ember",
+      "light": "red_ember"
+    },
+    "diffAddedBg": {
+      "dark": "brown_dark",
+      "light": "brown_dark"
+    },
+    "diffRemovedBg": {
+      "dark": "brown_dark",
+      "light": "brown_dark"
+    },
+    "diffContextBg": {
+      "dark": "g_10",
+      "light": "g_9"
+    },
+    "diffLineNumber": {
+      "dark": "g_6",
+      "light": "g_5"
+    },
+    "diffAddedLineNumberBg": {
+      "dark": "brown_dark",
+      "light": "brown_dark"
+    },
+    "diffRemovedLineNumberBg": {
+      "dark": "brown_dark",
+      "light": "brown_dark"
+    },
+    "markdownText": {
+      "dark": "text",
+      "light": "g_3"
+    },
+    "markdownHeading": {
+      "dark": "red_glowing",
+      "light": "red_glowing"
+    },
+    "markdownLink": {
+      "dark": "orange_glow",
+      "light": "orange_glow"
+    },
+    "markdownLinkText": {
+      "dark": "red_glowing",
+      "light": "red_glowing"
+    },
+    "markdownCode": {
+      "dark": "g_2",
+      "light": "g_2"
+    },
+    "markdownBlockQuote": {
+      "dark": "g_5",
+      "light": "g_5"
+    },
+    "markdownEmph": {
+      "dark": "orange_smolder",
+      "light": "orange_smolder"
+    },
+    "markdownStrong": {
+      "dark": "orange_blaze",
+      "light": "orange_blaze"
+    },
+    "markdownHorizontalRule": {
+      "dark": "g_6",
+      "light": "g_5"
+    },
+    "markdownListItem": {
+      "dark": "text",
+      "light": "g_3"
+    },
+    "markdownListEnumeration": {
+      "dark": "blue",
+      "light": "blue"
+    },
+    "markdownImage": {
+      "dark": "orange_glow",
+      "light": "orange_glow"
+    },
+    "markdownImageText": {
+      "dark": "red_glowing",
+      "light": "red_glowing"
+    },
+    "markdownCodeBlock": {
+      "dark": "g_2",
+      "light": "g_3"
+    },
+    "syntaxComment": {
+      "dark": "g_6",
+      "light": "g_5"
+    },
+    "syntaxKeyword": {
+      "dark": "red_ember",
+      "light": "red_ember"
+    },
+    "syntaxFunction": {
+      "dark": "g_3",
+      "light": "g_3"
+    },
+    "syntaxVariable": {
+      "dark": "g_3",
+      "light": "g_3"
+    },
+    "syntaxString": {
+      "dark": "red_glowing",
+      "light": "red_glowing"
+    },
+    "syntaxNumber": {
+      "dark": "blue",
+      "light": "blue"
+    },
+    "syntaxType": {
+      "dark": "blue",
+      "light": "blue"
+    },
+    "syntaxOperator": {
+      "dark": "orange_glow",
+      "light": "orange_glow"
+    },
+    "syntaxPunctuation": {
+      "dark": "g_2",
+      "light": "g_4"
+    }
+  }
+}

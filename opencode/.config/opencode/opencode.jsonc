@@ -1,6 +1,6 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "theme": "monokai-spectrum",
+  "theme": "ashen",
   "autoupdate": true,
   "keybinds": {
     "leader": "ctrl+x",
