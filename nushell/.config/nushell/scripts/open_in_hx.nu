@@ -55,7 +55,7 @@ def open-file-in-helix [file: string] {
         sleep 50ms
         
         # Send :open command
-        ^zellij action write-chars $":open ($file)"
+        ^zellij action write-chars $":open \"($file)\""
         sleep 50ms
         
         # Send Enter

@@ -204,9 +204,9 @@
             "{{ if gt .Behind 0 }}p:white_dim{{ end }}"
           ],
           "options": {
-            "branch_icon": "\ue725 ",
+            "branch_icon": "\ue0a0 ",
             "fetch_status": true,
-            "fetch_upstream_icon": true
+            "fetch_upstream_icon": false
           },
           "template": " {{ .UpstreamIcon }}{{ .HEAD }}{{ if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} \ueb4b {{ .StashCount }}{{ end }} "
         },

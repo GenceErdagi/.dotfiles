@@ -12,7 +12,7 @@ layout {
     // ---------------------------------------------------
     // Initial IDE Tab
     // ---------------------------------------------------
-    tab focus=true {
+    tab name="IDE" focus=true {
         pane split_direction="vertical" {
             pane size="15%" command="env" name="Yazi" {
                 args "YAZI_IDE_SIDEBAR=1" "nu" "/home/gence/.config/nushell/scripts/yazi-zx.nu"
@@ -84,6 +84,18 @@ layout {
     // ---------------------------------------------------
     // IDE-Specific Tiled Swap Layouts
     // ---------------------------------------------------
+    swap_tiled_layout name="BASE" {
+        tab {
+            pane split_direction="vertical" {
+                pane name="Yazi" size="15%"
+                pane split_direction="horizontal" {
+                    pane { children; }
+                    pane name="Terminal" size="25%"
+                }
+            }
+        }
+    }
+
     swap_tiled_layout name="no_sidebar" {
         tab {
             pane split_direction="vertical" {
