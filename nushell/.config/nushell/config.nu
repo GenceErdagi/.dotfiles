@@ -15,7 +15,7 @@ def --env yz [] {
 
 $env.config.show_banner = false
 alias zjide = zellij --layout ide
-
+alias zj = zjide
 # Initialize oh-my-posh
 source ~/.oh-my-posh.nu
 

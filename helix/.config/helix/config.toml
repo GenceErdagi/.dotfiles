@@ -1,5 +1,3 @@
-theme = "ashen"
-
 [editor]
 true-color = true
 line-number = "relative"

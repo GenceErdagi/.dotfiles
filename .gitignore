@@ -13,3 +13,4 @@ target/
 Screenshot*.png
 *.gitconfig
 home/.gitconfig
+**/runtime/
