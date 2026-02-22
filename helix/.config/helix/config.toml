@@ -4,6 +4,8 @@ line-number = "relative"
 mouse = true
 bufferline = "always"
 color-modes = true
+idle-timeout = 200
+completion-trigger-len = 1
 
 [editor.soft-wrap]
 enable = true
