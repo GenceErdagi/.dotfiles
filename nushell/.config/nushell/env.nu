@@ -34,3 +34,7 @@ if (which fnm | is-not-empty) {
 
 ^/home/gence/.local/bin/zoxide init nushell --cmd cd | save -f ~/.zoxide.nu
 oh-my-posh init nu --config ~/.config/oh-my-posh/theme.omp.json | save -f ~/.oh-my-posh.nu
+
+$env.CARAPACE_BRIDGES = 'zsh,fish,bash,inshellisense' # optional
+mkdir $"($nu.cache-dir)"
+carapace _carapace nushell | save --force $"($nu.cache-dir)/carapace.nu"

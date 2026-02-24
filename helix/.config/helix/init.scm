@@ -1,8 +1,10 @@
 (require (prefix-in helix. "helix/commands.scm"))
 (require "languages.scm")
 (require "themes/ashen.scm")
+(require "splash.scm")
 
-(provide hello-steel)
-(define (hello-steel)
-  (helix.echo "Steel is correctly installed and running!"))
 (helix.theme "ashen")
+
+(when (equal? (command-line) '("hx"))
+  (show-splash))
+
