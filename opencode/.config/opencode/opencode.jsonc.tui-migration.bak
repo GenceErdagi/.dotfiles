@@ -1,6 +1,13 @@
 {
   "$schema": "https://opencode.ai/config.json",
+  "theme": "ashen",
   "autoupdate": true,
+  "keybinds": {
+    "leader": "ctrl+x",
+    "command_list": "ctrl+space",
+    "model_cycle_recent": "none",
+    "variant_cycle": "ctrl+alt+t"
+  },
   "plugin": [
     "@paflopes/opencode-qwen-auth@latest",
     "opencode-gemini-auth@latest"

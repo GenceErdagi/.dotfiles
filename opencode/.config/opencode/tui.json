@@ -1,0 +1,10 @@
+{
+  "$schema": "https://opencode.ai/tui.json",
+  "theme": "ashen",
+  "keybinds": {
+    "leader": "ctrl+x",
+    "command_list": "ctrl+space",
+    "model_cycle_recent": "none",
+    "variant_cycle": "ctrl+alt+t"
+  }
+}
