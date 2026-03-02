@@ -97,7 +97,22 @@
 # auto-format = true
 # formatter = { command = "bash", args = ["-c", "npx stylelint --fix 2>&1 | prettier --parser css "] }
 # 
-# # Example use in markdown:
+# # rust-analyzer configuration for large projects
+[language-server.rust-analyzer]
+command = "rust-analyzer"
+
+[language-server.rust-analyzer.config]
+rust-analyzer.cargo.buildScripts.enable = false
+rust-analyzer.procMacro.enable = false
+rust-analyzer.crateStartupGraph = "full"
+rust-analyzer.cacheSize = "heavy"
+rust-analyzer.diagnostics.delayMS = 500
+
+[[language]]
+name = "rust"
+language-servers = ["rust-analyzer"]
+
+# Example use in markdown:
 # [[language]]
 # name = "markdown"
 # language-servers = ["codebook"]
