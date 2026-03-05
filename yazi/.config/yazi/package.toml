@@ -18,5 +18,15 @@ use = "yazi-rs/plugins:git"
 rev = "88990a6"
 hash = "270915fa8282a19908449530ff66f7e2"
 
+[[plugin.deps]]
+use = "genceerdagi/confirm-quit"
+rev = "ed2891e"
+hash = "34c294d3220e0cb63225f1aac4a0b633"
+
+[[plugin.deps]]
+use = "genceerdagi/workspace-guard"
+rev = "0e83a84"
+hash = "fc47846b21e92b8b3459b735ad1dc571"
+
 [flavor]
 deps = []
