@@ -1,32 +1,27 @@
 [[plugin.deps]]
 use = "yazi-rs/plugins:no-status"
-rev = "88990a6"
+rev = "1962818"
 hash = "3e023d31f29201efdac2a6ae35fedb78"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:toggle-pane"
-rev = "88990a6"
-hash = "8a7c58225816a163a6e8730c0adafbc8"
+rev = "1962818"
+hash = "4c0260feb50ea2437380690ffc241da7"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:smart-enter"
-rev = "88990a6"
-hash = "56fdabc96fc1f4d53c96eb884b02a5be"
-
-[[plugin.deps]]
-use = "yazi-rs/plugins:git"
-rev = "88990a6"
-hash = "270915fa8282a19908449530ff66f7e2"
+rev = "1962818"
+hash = "187cc58ba7ac3befd49c342129e6f1b6"
 
 [[plugin.deps]]
 use = "genceerdagi/confirm-quit"
-rev = "ed2891e"
-hash = "34c294d3220e0cb63225f1aac4a0b633"
+rev = "8cc6e04"
+hash = "72a7965c50a550a303f0486dd2fd9403"
 
 [[plugin.deps]]
 use = "genceerdagi/workspace-guard"
-rev = "0e83a84"
-hash = "fc47846b21e92b8b3459b735ad1dc571"
+rev = "e36b19d"
+hash = "25a6d932bece324e0a61a9756bc33fce"
 
 [flavor]
 deps = []

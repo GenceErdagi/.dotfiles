@@ -1,15 +1,7 @@
----@meta confirm-quit
-
---- A Yazi plugin that requires confirmation before quitting.
----@since 25.5.31
-
-local M = {}
-
-local STATE_FILE = os.getenv("HOME") .. "/.cache/yazi-confirm-quit.state"
-local TIMEOUT = 3
+local state_file = os.getenv("HOME") .. "/.cache/yazi-confirm-quit.state"
 
 local function read_state()
-	local f = io.open(STATE_FILE, "r")
+	local f = io.open(state_file, "r")
 	if not f then
 		return nil
 	end
@@ -19,34 +11,32 @@ local function read_state()
 end
 
 local function write_state(time)
-	local f = io.open(STATE_FILE, "w")
+	local f = io.open(state_file, "w")
 	if f then
 		f:write(tostring(time))
 		f:close()
 	end
 end
 
-local function notify(title, content)
-	ya.notify({
-		title = title,
-		content = content,
-		timeout = TIMEOUT,
-		level = "info",
-	})
-end
-
-function M.entry()
+local function entry()
 	local now = os.time()
 	local last_time = read_state()
 
-	if last_time and (now - last_time) < TIMEOUT then
-		os.remove(STATE_FILE)
+	-- If last press was within 3 seconds, actually quit
+	if last_time and (now - last_time) < 3 then
+		os.remove(state_file)
 		ya.emit("quit", {})
 		return
 	end
 
+	-- Otherwise, show notification and record time
 	write_state(now)
-	notify("Quit Confirmation", "Press 'q' again within 3s to quit Yazi")
+	ya.notify({
+		title = "Quit Confirmation",
+		content = "Press 'q' again within 3s to quit Yazi",
+		timeout = 3,
+		level = "info",
+	})
 end
 
-return { entry = M.entry }
+return { entry = entry }
