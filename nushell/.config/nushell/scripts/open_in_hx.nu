@@ -54,8 +54,13 @@ def open-file-in-helix [file: string] {
         ^zellij action write 27
         sleep 50ms
         
-        # Send :open command
-        ^zellij action write-chars $":open \"($file)\""
+        # Use Alt-: (ESC + :) to trigger the built-in command mode
+        # This bypasses any custom plugins mapped to ":"
+        ^zellij action write 27 58
+        sleep 50ms
+        
+        # Send open command
+        ^zellij action write-chars $"open \"($file)\""
         sleep 50ms
         
         # Send Enter

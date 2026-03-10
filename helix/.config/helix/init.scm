@@ -2,6 +2,7 @@
 (require "languages.scm")
 (require "themes/ashen.scm")
 (require "splash.scm")
+(require "fine-cmdline.scm")
 
 (helix.theme "ashen")
 
