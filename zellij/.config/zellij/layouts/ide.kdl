@@ -28,6 +28,57 @@ layout {
     }
 
     // ---------------------------------------------------
+    // IDE-Specific Tiled Swap Layouts
+    // ---------------------------------------------------
+    swap_tiled_layout name="BASE" {
+        tab {
+            pane split_direction="vertical" {
+                pane name="Yazi" size="15%"
+                pane split_direction="horizontal" {
+                    pane { children; }
+                    pane name="Terminal" size="25%"
+                }
+            }
+        }
+    }
+
+    swap_tiled_layout name="no_sidebar" {
+        tab {
+            pane split_direction="vertical" {
+                pane name="Yazi" size="1"
+                pane split_direction="horizontal" {
+                    pane { children; }
+                    pane name="Terminal" size="25%"
+                }
+            }
+        }
+    }
+
+    swap_tiled_layout name="no_terminal" {
+        tab {
+            pane split_direction="vertical" {
+                pane name="Yazi" size="15%"
+                pane split_direction="horizontal" {
+                    pane { children; }
+                    pane name="Terminal" size="1"
+                }
+            }
+        }
+    }
+
+    swap_tiled_layout name="zen" {
+        tab {
+            pane split_direction="vertical" {
+                pane name="Yazi" size="1"
+                pane split_direction="horizontal" {
+                    pane { children; }
+                    pane name="Terminal" size="1"
+                }
+            }
+        }
+    }
+
+    // ---------------------------------------------------
     // Default Tiled Swap Layouts
     // ---------------------------------------------------
     swap_tiled_layout name="vertical" {
@@ -77,57 +128,6 @@ layout {
             pane split_direction="vertical" {
                 pane
                 pane stacked=true { children; }
-            }
-        }
-    }
-
-    // ---------------------------------------------------
-    // IDE-Specific Tiled Swap Layouts
-    // ---------------------------------------------------
-    swap_tiled_layout name="BASE" {
-        tab {
-            pane split_direction="vertical" {
-                pane name="Yazi" size="15%"
-                pane split_direction="horizontal" {
-                    pane { children; }
-                    pane name="Terminal" size="25%"
-                }
-            }
-        }
-    }
-
-    swap_tiled_layout name="no_sidebar" {
-        tab {
-            pane split_direction="vertical" {
-                pane name="Yazi" size="1"
-                pane split_direction="horizontal" {
-                    pane { children; }
-                    pane name="Terminal" size="25%"
-                }
-            }
-        }
-    }
-
-    swap_tiled_layout name="no_terminal" {
-        tab {
-            pane split_direction="vertical" {
-                pane name="Yazi" size="15%"
-                pane split_direction="horizontal" {
-                    pane { children; }
-                    pane name="Terminal" size="1"
-                }
-            }
-        }
-    }
-
-    swap_tiled_layout name="zen" {
-        tab {
-            pane split_direction="vertical" {
-                pane name="Yazi" size="1"
-                pane split_direction="horizontal" {
-                    pane { children; }
-                    pane name="Terminal" size="1"
-                }
             }
         }
     }
