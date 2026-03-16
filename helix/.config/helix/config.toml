@@ -9,7 +9,6 @@ color-modes = true
 enable = true
 max-wrap = 25
 max-indent-retain = 0
-wrap-indicator = ""
 
 [editor.cursor-shape]
 insert = "bar"
@@ -41,6 +40,4 @@ tab = "all"
 [keys.normal]
 C-b = ":bc"
 esc = ["collapse_selection","keep_primary_selection"]
-":" = ":fine-cmdline/open"
-"A-:" = "command_mode"
 
