@@ -14,8 +14,44 @@ def --env yz [] {
 }
 
 $env.config.show_banner = false
-alias zjide = zellij --layout ide
+
+# Custom Zellij launcher with folder-based session name (attach or create)
+def --env zjide [...args] {
+    let folder_name = ($env.PWD | path basename)
+    zellij --layout ide attach --create $folder_name ...$args
+}
+
+# List Zellij sessions in a nice table
+def zellijj-ls [] {
+    zellij ls | ansi strip | lines | split column -c " " name status
+}
+
+# Cleanup Zellij sessions (defaults to EXITED ones)
+def zellij-cleanup [
+    --all (-a) # Delete all sessions regardless of status
+] {
+    let sessions = (
+        zellij ls 
+        | ansi strip 
+        | lines 
+        | if $all { $in } else { where $it =~ "EXITED" }
+        | each { |it| $it | split row " " | first }
+    )
+    
+    if ($sessions | is-empty) {
+        print "No sessions to cleanup."
+        return
+    }
+
+    for session in $sessions {
+        print $"Deleting session: ($session)"
+        zellij delete-session $session
+    }
+}
+
 alias zj = zjide
+alias zjc = zellij-cleanup
+alias zjl = zellijj-ls 
 alias c = clear
 
 # Initialize oh-my-posh
