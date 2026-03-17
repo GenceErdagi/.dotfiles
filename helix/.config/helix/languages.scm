@@ -85,3 +85,19 @@
 
 (define-language "scheme"
                  (language-servers '("steel-language-server")))
+
+;; (define-lsp "clangd"
+;;   (command "clangd")
+;;   (args '("--background-index" "--clang-tidy" "--header-insertion=iwyu")))
+;;
+;; (define-language "c"
+;;   (auto-format #t)
+;;   (language-servers '("clangd"))
+;;   (formatter (command "clang-format"))
+;;   (debugger (hash "name" "lldb-dap" "transport" "stdio" "command" "lldb-dap" "templates" '())))
+;;
+;; (define-language "cpp"
+;;   (auto-format #t)
+;;   (language-servers '("clangd"))
+;;   (formatter (command "clang-format"))
+;;   (debugger (hash "name" "lldb-dap" "transport" "stdio" "command" "lldb-dap" "templates" '())))

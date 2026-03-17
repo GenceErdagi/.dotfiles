@@ -96,39 +96,24 @@
 # ]
 # auto-format = true
 # formatter = { command = "bash", args = ["-c", "npx stylelint --fix 2>&1 | prettier --parser css "] }
+
+# [[language]]
+# name = "c"
+# auto-format = true
+# language-servers = [ "clangd" ]
+# formatter = { command = "clang-format" }
+# debugger = { name = "lldb-dap", transport = "stdio", command = "lldb-dap", templates = [] }
 # 
-# # rust-analyzer configuration for large projects
-[language-server.rust-analyzer]
-command = "rust-analyzer"
-
-[language-server.rust-analyzer.config]
-rust-analyzer.cargo.buildScripts.enable = false
-rust-analyzer.procMacro.enable = false
-rust-analyzer.crateStartupGraph = "full"
-rust-analyzer.cacheSize = "heavy"
-rust-analyzer.diagnostics.delayMS = 500
-
-[[language]]
-name = "rust"
-language-servers = ["rust-analyzer"]
-
-[[language]]
-name = "c"
-auto-format = true
-language-servers = [ "clangd" ]
-formatter = { command = "clang-format" }
-debugger = { name = "lldb-dap", transport = "stdio", command = "lldb-dap", templates = [] }
-
-[[language]]
-name = "cpp"
-auto-format = true
-language-servers = [ "clangd" ]
-formatter = { command = "clang-format" }
-debugger = { name = "lldb-dap", transport = "stdio", command = "lldb-dap", templates = [] }
-
-[language-server.clangd]
-command = "clangd"
-args = ["--background-index", "--clang-tidy", "--header-insertion=iwyu"]
+# [[language]]
+# name = "cpp"
+# auto-format = true
+# language-servers = [ "clangd" ]
+# formatter = { command = "clang-format" }
+# debugger = { name = "lldb-dap", transport = "stdio", command = "lldb-dap", templates = [] }
+# 
+# [language-server.clangd]
+# command = "clangd"
+# args = ["--background-index", "--clang-tidy", "--header-insertion=iwyu"]
 
 # Example use in markdown:
 # [[language]]

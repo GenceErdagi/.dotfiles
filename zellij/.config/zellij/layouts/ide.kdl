@@ -14,12 +14,11 @@ layout {
     // ---------------------------------------------------
     tab name="IDE" focus=true {
         pane split_direction="vertical" {
-            pane size="15%" command="env" name="Yazi" {
+            pane size="15%" command="env" name="File-Explorer" {
                 args "YAZI_IDE_SIDEBAR=1" "nu" "/home/gence/.config/nushell/scripts/yazi-zx.nu"
-                focus true
             }
             pane split_direction="horizontal" {
-                pane command="nu" name="Helix" {
+                pane command="nu" name="Editor" {
                     args "-c" "hx"
                 }
                 pane name="Terminal" size="25%"
@@ -33,7 +32,7 @@ layout {
     swap_tiled_layout name="BASE" {
         tab {
             pane split_direction="vertical" {
-                pane name="Yazi" size="15%"
+                pane name="File-Explorer" size="15%"
                 pane split_direction="horizontal" {
                     pane { children; }
                     pane name="Terminal" size="25%"
@@ -45,7 +44,7 @@ layout {
     swap_tiled_layout name="no_sidebar" {
         tab {
             pane split_direction="vertical" {
-                pane name="Yazi" size="1"
+                pane name="File-Explorer" size="1"
                 pane split_direction="horizontal" {
                     pane { children; }
                     pane name="Terminal" size="25%"
@@ -57,7 +56,7 @@ layout {
     swap_tiled_layout name="no_terminal" {
         tab {
             pane split_direction="vertical" {
-                pane name="Yazi" size="15%"
+                pane name="File-Explorer" size="15%"
                 pane split_direction="horizontal" {
                     pane { children; }
                     pane name="Terminal" size="1"
@@ -69,7 +68,7 @@ layout {
     swap_tiled_layout name="zen" {
         tab {
             pane split_direction="vertical" {
-                pane name="Yazi" size="1"
+                pane name="File-Explorer" size="1"
                 pane split_direction="horizontal" {
                     pane { children; }
                     pane name="Terminal" size="1"

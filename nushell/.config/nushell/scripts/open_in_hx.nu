@@ -7,7 +7,7 @@ def main [file?: string] {
     
     # Focus Helix pane via zjide-manager plugin
     try {
-        ^zellij pipe -n "focus-helix" -- ""
+        ^zellij pipe -n "focus-pane" -- "Editor"
     } catch {
         # Fallback
         ^zellij action move-focus right
