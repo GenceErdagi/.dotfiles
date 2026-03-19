@@ -166,7 +166,7 @@
           "type": "executiontime",
           "style": "powerline",
           "powerline_symbol": "\ue0c7",
-          "leading_diamond": "\ue0c7",
+          "leading_diamond": "<p:grey_lighter>\ue0c7</>",
           "invert_powerline": true,
           "background": "p:grey_medium",
           "foreground": "p:grey_lighter",
@@ -199,6 +199,7 @@
             "{{ if gt .Behind 0 }}p:red{{ end }}"
           ],
           "foreground_templates": [
+            "{{ if or (.Working.Changed) (.Staging.Changed) }}p:black_light{{ end }}",
             "{{ if and (gt .Ahead 0) (gt .Behind 0) }}p:white_dim{{ end }}",
             "{{ if gt .Ahead 0 }}p:white_dim{{ end }}",
             "{{ if gt .Behind 0 }}p:white_dim{{ end }}"
