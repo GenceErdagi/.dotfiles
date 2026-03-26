@@ -32,4 +32,5 @@ tab = "all"
 [keys.normal]
 C-b = ":bc"
 esc = ["collapse_selection","keep_primary_selection"]
-
+A-F = ":format"
+Y = ":clipboard-yank"
