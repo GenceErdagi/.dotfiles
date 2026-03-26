@@ -1,7 +1,7 @@
 (require (prefix-in helix. "helix/commands.scm"))
 (require "languages.scm")
 (require "themes/ashen.scm")
-(require "tcp_server.scm")
+(require "helix-remote/helix-remote.scm")
 
 (helix.theme "ashen")
 

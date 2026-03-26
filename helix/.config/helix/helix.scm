@@ -1,12 +1,8 @@
 (require (prefix-in helix. "helix/commands.scm"))
 (require (prefix-in helix.static. "helix/static.scm"))
-(require "focus.scm")
 
 (provide open-helix-scm
-         open-init-scm
-         focus
-         unfocus)
-
+         open-init-scm)
 ;;@doc
 ;; Open the helix.scm file
 (define (open-helix-scm)

@@ -14,11 +14,11 @@ layout {
     // ---------------------------------------------------
     tab name="IDE" focus=true {
         pane split_direction="vertical" {
-            pane size="15%" command="env" name="File-Explorer" {
+            pane size="15%" command="env" name="File-Explorer" focus=true {
                 args "YAZI_IDE_SIDEBAR=1" "nu" "/home/gence/.config/nushell/scripts/yazi-zx.nu"
             }
             pane split_direction="horizontal" {
-                pane command="hx" name="Editor" focus=true
+                pane command="hx" name="Editor"
                 pane name="Terminal" size=1
             }
         }
