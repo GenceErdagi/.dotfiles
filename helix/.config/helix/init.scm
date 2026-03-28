@@ -6,5 +6,5 @@
 (helix.theme "ashen")
 
 ;; Start the TCP server for file opening from yazi/zellij
-(start-helix-tcp-server 6666)
-
+;; Pass -1 to derive port from ZELLIJ_SESSION_NAME
+(start-helix-tcp-server -1)
