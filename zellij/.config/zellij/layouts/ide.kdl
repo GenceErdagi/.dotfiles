@@ -19,25 +19,25 @@ layout {
             }
             pane split_direction="horizontal" {
                 pane command="hx" name="Editor"
-                pane name="Terminal" size="25%"
+                pane name="Terminal" size=1
             }
         }
     }
 
-    // ---------------------------------------------------
-    // IDE-Specific Tiled Swap Layouts
-    // ---------------------------------------------------
-    swap_tiled_layout name="BASE" {
-        tab {
-            pane split_direction="vertical" {
-                pane name="File-Explorer" size="15%"
-                pane split_direction="horizontal" {
-                    pane { children; }
-                    pane name="Terminal" size="25%"
-                }
-            }
-        }
-    }
+    // // ---------------------------------------------------
+    // // IDE-Specific Tiled Swap Layouts
+    // // ---------------------------------------------------
+    // swap_tiled_layout name="BASE" {
+    //     tab {
+    //         pane split_direction="vertical" {
+    //             pane name="File-Explorer" size="15%"
+    //             pane split_direction="horizontal" {
+    //                 pane { children; }
+    //                 pane name="Terminal" size="25%"
+    //             }
+    //         }
+    //     }
+    // }
 
     swap_tiled_layout name="no_sidebar" {
         tab {
@@ -45,19 +45,19 @@ layout {
                 pane name="File-Explorer" size=1
                 pane split_direction="horizontal" {
                     pane { children; }
-                    pane name="Terminal" size="25%"
+                    pane name="Terminal" size="20%"
                 }
             }
         }
     }
 
-    swap_tiled_layout name="no_terminal" {
+    swap_tiled_layout name="terminal" {
         tab {
             pane split_direction="vertical" {
                 pane name="File-Explorer" size="15%"
                 pane split_direction="horizontal" {
                     pane { children; }
-                    pane name="Terminal" size=1
+                    pane name="Terminal" size="20%"
                 }
             }
         }

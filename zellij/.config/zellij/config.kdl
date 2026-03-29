@@ -282,14 +282,13 @@ plugins {
 
     zjide-manager location="file:/home/gence/probe/zjide-manager/target/wasm32-wasip1/release/zjide-manager.wasm" {
         default_layout "BASE"
-        startup_layout "no_terminal"
         default_focus_pane "Editor"
         pane_name.editor "Editor"
         pane_name.terminal "Terminal"
         pane_name.sidebar "File-Explorer"
-        layout.BASE "sidebar=true,terminal=true"
+        layout.BASE "sidebar=true,terminal=false"
         layout.no_sidebar "sidebar=false,terminal=true"
-        layout.no_terminal "sidebar=true,terminal=false"
+        layout.terminal "sidebar=true,terminal=true"
         layout.zen "sidebar=false,terminal=false"
         trigger.toggle_sidebar "toggle sidebar"
         trigger.toggle_terminal "toggle terminal"
@@ -320,5 +319,4 @@ themes {
     }
 } 
 theme "ashen"
-default_layout "default"
 show_startup_tips false
