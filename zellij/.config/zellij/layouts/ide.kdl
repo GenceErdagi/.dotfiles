@@ -10,7 +10,7 @@ layout {
     }
 
     // ---------------------------------------------------
-    // Initial IDE Tab (Sidebar Only - No Terminal)
+    // Initial IDE Tab
     // ---------------------------------------------------
     tab name="IDE" focus=true {
         pane split_direction="vertical" {
@@ -19,7 +19,7 @@ layout {
             }
             pane split_direction="horizontal" {
                 pane command="hx" name="Editor"
-                pane name="Terminal" size=1
+                pane name="Terminal" size="25%"
             }
         }
     }
@@ -27,7 +27,7 @@ layout {
     // ---------------------------------------------------
     // IDE-Specific Tiled Swap Layouts
     // ---------------------------------------------------
-    swap_tiled_layout name="IDE_FULL" {
+    swap_tiled_layout name="BASE" {
         tab {
             pane split_direction="vertical" {
                 pane name="File-Explorer" size="15%"
@@ -39,7 +39,7 @@ layout {
         }
     }
 
-    swap_tiled_layout name="IDE_NO_SIDEBAR" {
+    swap_tiled_layout name="no_sidebar" {
         tab {
             pane split_direction="vertical" {
                 pane name="File-Explorer" size=1
@@ -51,7 +51,7 @@ layout {
         }
     }
 
-    swap_tiled_layout name="IDE_NO_TERMINAL" {
+    swap_tiled_layout name="no_terminal" {
         tab {
             pane split_direction="vertical" {
                 pane name="File-Explorer" size="15%"
@@ -63,7 +63,7 @@ layout {
         }
     }
 
-    swap_tiled_layout name="IDE_ZEN" {
+    swap_tiled_layout name="zen" {
         tab {
             pane split_direction="vertical" {
                 pane name="File-Explorer" size=1

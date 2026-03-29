@@ -21,12 +21,6 @@ def --env zjide [...args] {
     zellij --layout ide attach --create $folder_name ...$args
 }
 
-# Custom Zellij launcher with folder-based session name (IDE-Right variant)
-def --env zjl [...args] {
-    let folder_name = ($env.PWD | path basename)
-    zellij --layout ide-right attach --create $folder_name ...$args
-}
-
 # List Zellij sessions in a nice table
 def zellijj-ls [] {
     zellij ls | ansi strip | lines | split column -c " " name status
