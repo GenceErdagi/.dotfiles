@@ -1,10 +1,12 @@
 (require (prefix-in helix. "helix/commands.scm"))
 (require "languages.scm")
 (require "themes/ashen.scm")
-(require "helix-remote/helix-remote.scm")
+(require "helix-server.hx/helix-server.scm")
+(require "helix-file-opener.hx/helix-file-opener.scm")
 
 (helix.theme "ashen")
 
-;; Start the TCP server for file opening from yazi/zellij
-;; Pass -1 to derive port from ZELLIJ_SESSION_NAME
-(start-helix-tcp-server -1)
+;; Register handlers before starting server
+(register-handler "open" open-file-handler)
+
+(helix-server-start)
