@@ -4,16 +4,6 @@
 ;; General Language Servers
 ;; -----------------------------------------------------------------------------
 
-(define-lsp "scls"
-  (command "simple-completion-language-server")
-  (config (hash "feature_words" #f
-                "feature_snippets" #t
-                "snippets_first" #t
-                "snippets_inline_by_word_tail" #f
-                "feature_unicode_input" #f
-                "feature_paths" #f
-                "feature_citations" #f)))
-
 (define-lsp "typescript-language-server"
   (config (hash "preferences" (hash "importModuleSpecifier" "non-relative"))))
 
@@ -42,7 +32,7 @@
 ;; -----------------------------------------------------------------------------
 
 (define-language "html"
-  (language-servers '("vscode-html-language-server" "tailwindcss-ls" "emmet-ls" "scls" "codebook")))
+  (language-servers '("vscode-html-language-server" "tailwindcss-ls" "emmet-ls"  "codebook")))
 
 (define-language "typescript"
   (auto-format #t)
@@ -86,18 +76,18 @@
 (define-language "scheme"
                  (language-servers '("steel-language-server")))
 
-;; (define-lsp "clangd"
-;;   (command "clangd")
-;;   (args '("--background-index" "--clang-tidy" "--header-insertion=iwyu")))
-;;
-;; (define-language "c"
-;;   (auto-format #t)
-;;   (language-servers '("clangd"))
-;;   (formatter (command "clang-format"))
-;;   (debugger (hash "name" "lldb-dap" "transport" "stdio" "command" "lldb-dap" "templates" '())))
-;;
-;; (define-language "cpp"
-;;   (auto-format #t)
-;;   (language-servers '("clangd"))
-;;   (formatter (command "clang-format"))
-;;   (debugger (hash "name" "lldb-dap" "transport" "stdio" "command" "lldb-dap" "templates" '())))
+; (define-lsp "clangd"
+;   (command "clangd")
+;   (args '("--background-index" "--clang-tidy" "--header-insertion=iwyu")))
+
+; (define-language "c"
+;   (auto-format #t)
+;   (language-servers '("clangd"))
+;   (formatter (command "clang-format"))
+;   (debugger (hash "name" "lldb-dap" "transport" "stdio" "command" "lldb-dap" "templates" '())))
+
+; (define-language "cpp"
+;   (auto-format #t)
+;   (language-servers '("clangd"))
+;   (formatter (command "clang-format"))
+;   (debugger (hash "name" "lldb-dap" "transport" "stdio" "command" "lldb-dap" "templates" '())))

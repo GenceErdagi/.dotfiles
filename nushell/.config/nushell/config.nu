@@ -54,8 +54,6 @@ alias zjc = zellij-cleanup
 alias zjls = zellijj-ls 
 alias c = clear
 
-# Initialize oh-my-posh
-source ~/.oh-my-posh.nu
 # Initilize zoxide 
 source ~/.zoxide.nu
 
@@ -82,4 +80,3 @@ $env.config.completions.external = {
   completer: $external_completer
 }
 
-source $"($nu.cache-dir)/carapace.nu"

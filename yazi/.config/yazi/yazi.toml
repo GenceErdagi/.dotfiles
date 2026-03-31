@@ -6,11 +6,12 @@ show_hidden = true
 
 [opener]
 text = [
-    { run = 'nu ~/.config/nushell/scripts/open_in_hx.nu "$@"', block = false, desc = "Open in Helix via Zellij" }
+    { run = 'nu ~/.config/nushell/scripts/open_in_hx.nu $@', block = false, desc = "Open in Helix via Zellij" }
 ]
 
 [open]
 prepend_rules = [
+    { mime = "inode/empty", use = "text" },
     { mime = "text/*", use = "text" },
     { mime = "application/json", use = "text" }
 ]
