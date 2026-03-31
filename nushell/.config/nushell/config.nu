@@ -1,82 +1,104 @@
-def --env y [...args] {
-	let tmp = (mktemp -t "yazi-cwd.XXXXXX")
-	^yazi ...$args --cwd-file $tmp
-	let cwd = (open $tmp)
-	if $cwd != $env.PWD and ($cwd | path exists) {
-		cd $cwd
-	}
-	rm -fp $tmp
-}
-
-# Yazi-ZX - Interactive file manager that opens files in Helix
-def --env yz [] {
-	nu ~/.config/nushell/scripts/yazi-zx.nu
-}
-
 $env.config.show_banner = false
 
-# Custom Zellij launcher with folder-based session name (attach or create)
-def --env zjide [...args] {
-    let folder_name = ($env.PWD | path basename)
-    zellij --layout ide attach --create $folder_name ...$args
-}
+const config_dir = ($nu.config-path | path dirname)
 
-# List Zellij sessions in a nice table
-def zellijj-ls [] {
-    zellij ls | ansi strip | lines | split column -c " " name status
-}
+source ($config_dir | path join "yazi.nu")
+source ($config_dir | path join "zellij.nu")
+source ($config_dir | path join "completions.nu")
+source ($config_dir | path join "aliases.nu")
 
-# Cleanup Zellij sessions (defaults to EXITED ones)
-def zellij-cleanup [
-    --all (-a) # Delete all sessions regardless of status
-] {
-    let sessions = (
-        zellij ls 
-        | ansi strip 
-        | lines 
-        | if $all { $in } else { where $it =~ "EXITED" }
-        | each { |it| $it | split row " " | first }
-    )
-    
-    if ($sessions | is-empty) {
-        print "No sessions to cleanup."
-        return
-    }
-
-    for session in $sessions {
-        print $"Deleting session: ($session)"
-        zellij delete-session $session
-    }
-}
-
-alias zj = zjide
-alias zjc = zellij-cleanup
-alias zjls = zellijj-ls 
-alias c = clear
-
-# Initilize zoxide 
 source ~/.zoxide.nu
 
-# External completers
-let carapace_completer = {|spans|
-  carapace $spans.0 nushell ...$spans | from json
+# Enable vi mode
+$env.config.edit_mode = "vi"
+
+# Cursor shapes matching Helix (line for insert, block for normal)
+$env.config.cursor_shape = {
+  vi_insert: line
+  vi_normal: block
 }
 
-let zoxide_completer = {|spans|
-  $spans | skip 1 | zoxide query -l ...$in | lines | where {|x| $x != $env.PWD}
+def create_left_prompt [] {
+  let dir = ($env.PWD | str replace $env.HOME "~")
+
+  let git = try {
+    let branch = (git branch --show-current o+e>| str trim)
+    if ($branch | is-empty) {
+      ""
+    } else {
+      let dirty = not (git status --porcelain o+e>| is-empty)
+      let icon = if $dirty { "" } else { "" }
+      let color = if $dirty { "yellow" } else { "green" }
+      $" (ansi $color)($icon) ($branch)(ansi reset)"
+    }
+  } catch { "" }
+
+  $"(ansi blue) ($dir)(ansi reset)($git)"
 }
 
-let external_completer = {|spans|
-  match $spans.0 {
-    z | zi => $zoxide_completer
-    __zoxide_z | __zoxide_zi => $zoxide_completer
-    _ => $carapace_completer
-  } | do $in $spans
+$env.PROMPT_COMMAND = {|| create_left_prompt }
+
+# Vi mode indicators with visual mode detection
+def vi_indicator [] {
+  let mode = ($env | get -o EDIT_MODE | default "normal")
+  match $mode {
+    insert => $"(ansi cyan_bold) INS (ansi reset)"
+    normal => $"(ansi green_bold) NOR (ansi reset)"
+    _ => $"(ansi magenta_bold) VIS (ansi reset)"
+  }
 }
 
-$env.config.completions.external = {
-  max_results: 20
-  enable: true
-  completer: $external_completer
+$env.PROMPT_INDICATOR_VI_NORMAL = {|| vi_indicator }
+$env.PROMPT_INDICATOR_VI_INSERT = {|| vi_indicator }
+$env.PROMPT_INDICATOR = {|| $"(ansi green)> (ansi reset)" }
+$env.PROMPT_MULTILINE_INDICATOR = {|| $"(ansi dark_gray)│ (ansi reset)" }
+
+# Right prompt: battery, RAM, date/time
+def battery_segment [] {
+  try {
+    let bat = (ls /sys/class/power_supply/BAT* | first | get name)
+    let capacity = (open ($bat | path join "capacity") | str trim | into int)
+    let charging = (open ($bat | path join "status") | str trim) == "Charging"
+    let icon = if $charging { "" } else {
+      if $capacity >= 80 { "" } else {
+      if $capacity >= 60 { "" } else {
+      if $capacity >= 40 { "" } else {
+      if $capacity >= 20 { "" } else { "" }}}}
+    }
+    let color = if $charging { "green" } else {
+      if $capacity >= 60 { "cyan" } else {
+      if $capacity >= 20 { "yellow" } else { "red" }}}
+    $"(ansi $color)($icon) ($capacity)%(ansi reset)"
+  } catch { "" }
 }
 
+def ram_segment [] {
+  try {
+    let meminfo = (open /proc/meminfo | lines | each { ansi strip })
+    let total_kb = ($meminfo | find "MemTotal:" | first | parse "MemTotal: {value} kB" | get 0.value | into int)
+    let avail_kb = ($meminfo | find "MemAvailable:" | first | parse "MemAvailable: {value} kB" | get 0.value | into int)
+    let used_pct = ((($total_kb - $avail_kb) * 100) / $total_kb) | math round
+    let icon = "󰍛"
+    let color = if $used_pct >= 90 { "red" } else {
+      if $used_pct >= 70 { "yellow" } else { "cyan" }}
+    $"(ansi $color)($icon) ($used_pct)%(ansi reset)"
+  } catch { "" }
+}
+
+def time_segment [] {
+  let now = (date now)
+  let date_part = ($now | format date "%d/%m")
+  let time_part = ($now | format date "%H:%M")
+  $"(ansi magenta) ($date_part)(ansi reset) (ansi yellow) ($time_part)(ansi reset)"
+}
+
+def create_right_prompt [] {
+  let battery = (battery_segment)
+  let ram = (ram_segment)
+  let time = (time_segment)
+
+  let parts = [$battery, $ram, $time] | where ($it | str length) > 0 | str join "  "
+  $"(ansi dark_gray)($parts)(ansi reset)"
+}
+
+$env.PROMPT_COMMAND_RIGHT = {|| create_right_prompt }
