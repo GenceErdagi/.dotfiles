@@ -16,6 +16,12 @@ insert = "bar"
 normal = "block"
 select = "underline"
 
+[editor.statusline]
+left = ["mode", "spinner", "selections", "primary-selection-length"]
+center = ["file-name", "read-only-indicator", "file-modification-indicator", "version-control"]
+right = ["diagnostics", "workspace-diagnostics", "file-encoding", "file-line-ending", "file-type", "position", "position-percentage"]
+separator = "│"
+
 [editor.indent-guides]
 render = true
 character = "│"
