@@ -5,7 +5,9 @@
 ;; -----------------------------------------------------------------------------
 
 (define-lsp "typescript-language-server"
-  (config (hash "preferences" (hash "importModuleSpecifier" "non-relative"))))
+  (config (hash "preferences"
+    (hash "importModuleSpecifier" "non-relative"
+          "preferTypeOnly" #t))))
 
 (define-lsp "stylelint"
   (command "stylelint-lsp")
@@ -36,23 +38,27 @@
 
 (define-language "typescript"
   (auto-format #t)
-  (language-servers '("typescript-language-server" "vscode-eslint-language-server" "graphql-language-service" "tailwindcss-ls" "codebook"))
-  (formatter (command "prettier") (args '("--parser" "typescript"))))
+  (language-servers '("typescript-language-server" "vscode-eslint-language-server" "tailwindcss-ls" "codebook"))
+  (formatter (command "prettier") (args '("--parser" "typescript")))
+  (debugger (hash "name" "js-debug" "transport" "stdio" "command" "js-debug-adapter" "templates" '())))
 
 (define-language "javascript"
   (auto-format #t)
   (language-servers '("typescript-language-server" "tailwindcss-ls" "codebook"))
-  (formatter (command "prettier") (args '("--parser" "typescript"))))
+  (formatter (command "prettier") (args '("--parser" "typescript")))
+  (debugger (hash "name" "js-debug" "transport" "stdio" "command" "js-debug-adapter" "templates" '())))
 
 (define-language "tsx"
   (auto-format #t)
   (language-servers '("typescript-language-server" "vscode-eslint-language-server" "emmet-ls" "tailwindcss-ls" "codebook"))
-  (formatter (command "prettier") (args '("--parser" "typescript"))))
+  (formatter (command "prettier") (args '("--parser" "typescript")))
+  (debugger (hash "name" "js-debug" "transport" "stdio" "command" "js-debug-adapter" "templates" '())))
 
 (define-language "jsx"
   (auto-format #t)
   (language-servers '("typescript-language-server" "vscode-eslint-language-server" "emmet-ls" "tailwindcss-ls" "codebook"))
-  (formatter (command "prettier") (args '("--parser" "typescript"))))
+  (formatter (command "prettier") (args '("--parser" "typescript")))
+  (debugger (hash "name" "js-debug" "transport" "stdio" "command" "js-debug-adapter" "templates" '())))
 
 (define-language "json"
   (language-servers '("codebook"))
@@ -76,18 +82,18 @@
 (define-language "scheme"
                  (language-servers '("steel-language-server")))
 
-; (define-lsp "clangd"
-;   (command "clangd")
-;   (args '("--background-index" "--clang-tidy" "--header-insertion=iwyu")))
+(define-lsp "clangd"
+  (command "clangd")
+  (args '("--background-index" "--clang-tidy" "--header-insertion=iwyu")))
 
-; (define-language "c"
-;   (auto-format #t)
-;   (language-servers '("clangd"))
-;   (formatter (command "clang-format"))
-;   (debugger (hash "name" "lldb-dap" "transport" "stdio" "command" "lldb-dap" "templates" '())))
+(define-language "c"
+  (auto-format #t)
+  (language-servers '("clangd"))
+  (formatter (command "clang-format"))
+  (debugger (hash "name" "lldb-dap" "transport" "stdio" "command" "lldb-dap" "templates" '())))
 
-; (define-language "cpp"
-;   (auto-format #t)
-;   (language-servers '("clangd"))
-;   (formatter (command "clang-format"))
-;   (debugger (hash "name" "lldb-dap" "transport" "stdio" "command" "lldb-dap" "templates" '())))
+(define-language "cpp"
+  (auto-format #t)
+  (language-servers '("clangd"))
+  (formatter (command "clang-format"))
+  (debugger (hash "name" "lldb-dap" "transport" "stdio" "command" "lldb-dap" "templates" '())))

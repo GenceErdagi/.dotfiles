@@ -1,0 +1,18 @@
+---
+# Force C mode for .c files to get C-style headers (<stdio.h> not <cstdio>)
+If:
+  PathMatch: ".*\\.c$"
+CompileFlags:
+  Add: ["-xc", "-std=c17"]
+
+# Force C++ mode for .cpp/.cc/.cxx files
+If:
+  PathMatch: ".*\\.(cpp|cc|cxx|hpp|hxx)$"
+CompileFlags:
+  Add: ["-xc++", "-std=c++17"]
+
+# Default for header files - treat as C++ (safer default)
+If:
+  PathMatch: ".*\\.h$"
+CompileFlags:
+  Add: ["-xc++"]

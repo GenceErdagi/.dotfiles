@@ -4,6 +4,7 @@ line-number = "relative"
 mouse = true
 bufferline = "always"
 color-modes = true
+auto-save = true
 
 [editor.soft-wrap]
 enable = true
@@ -20,17 +21,15 @@ render = true
 character = "│"
 skip-levels = 1
 
-[editor.statusline]
-left = ["mode", "spinner", "selections", "primary-selection-length"]
-center = ["file-name", "read-only-indicator", "file-modification-indicator", "version-control"]
-right = ["diagnostics", "workspace-diagnostics", "file-encoding", "file-line-ending", "file-type", "position", "position-percentage"]
-separator = "│"
-
 [editor.whitespace.render]
 tab = "all"
 
 [keys.normal]
 C-b = ":bc"
 esc = ["collapse_selection","keep_primary_selection"]
+A-F = ":format"
+Y = ":clipboard-yank"
+
+[keys.select]
 A-F = ":format"
 Y = ":clipboard-yank"

@@ -9,6 +9,10 @@
     "steel-language-server": {
       "command": ["steel-language-server"],
       "extensions": [".scm"]
+    },
+    "nu":{
+      "command": ["/usr/bin/nu"],
+      "extensions":[".nu"]
     }
   }
 }
