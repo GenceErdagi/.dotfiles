@@ -29,3 +29,8 @@ if (which fnm | is-not-empty) {
 }
 
 ^/home/gence/.local/bin/zoxide init nushell --cmd cd | save -f ~/.zoxide.nu
+
+# pnpm
+$env.PNPM_HOME = "/home/gence/.local/share/pnpm"
+$env.PATH = ($env.PATH | split row (char esep) | prepend $env.PNPM_HOME )
+# pnpm end
