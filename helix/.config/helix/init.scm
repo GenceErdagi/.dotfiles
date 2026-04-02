@@ -3,6 +3,7 @@
 (require "themes/ashen.scm")
 (require "helix-server/helix-server.scm")
 (require "helix-file-opener/helix-file-opener.scm")
+(require "scooter/scooter.scm")
 
 (helix.theme "ashen")
 
