@@ -29,11 +29,11 @@ def create_right_prompt [] {
 
 # ── Vi Mode Indicators ──
 def vi_indicator_normal [] {
-  $" (ansi white_bold)(ansi bg_cyan)\u{200a}NOR\u{200a}(ansi reset) "
+  $" (ansi black)(ansi bg_cyan)\u{200a}NOR\u{200a}(ansi reset) "
 }
 
 def vi_indicator_insert [] {
-  $" (ansi white_bold)(ansi bg_green)\u{200a}INS\u{200a}(ansi reset) \u{f0da} "
+  $" (ansi black)(ansi bg_green)\u{200a}INS\u{200a}(ansi reset) \u{f0da} "
 }
 
 # ── Set Prompt ──
