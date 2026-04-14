@@ -3,7 +3,7 @@
 .DS_Store
 Thumbs.db
 .history.txt
-nushell/.config/nushell/history.txt
+history.txt
 *.log
 configstore/
 .wrangler/
@@ -14,3 +14,4 @@ Screenshot*.png
 *.gitconfig
 home/.gitconfig
 **/runtime/
+**/atuin/
