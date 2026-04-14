@@ -2,6 +2,8 @@ $env.config.show_banner = false
 
 const config_dir = ($nu.config-path | path dirname)
 
+$env.config.plugins = { gstat: {} }
+
 source ($config_dir | path join "prompt.nu")
 source ($config_dir | path join "zellij.nu")
 source ($config_dir | path join "yazi.nu")
