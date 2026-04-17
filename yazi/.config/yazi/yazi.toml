@@ -13,5 +13,7 @@ text = [
 prepend_rules = [
     { mime = "inode/empty", use = "text" },
     { mime = "text/*", use = "text" },
-    { mime = "application/json", use = "text" }
+    { mime = "application/json", use = "text" },
+    { url = "*.tsx", use = "text" },
+    { url = "*.ts", use = "text" }
 ]

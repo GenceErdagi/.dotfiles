@@ -1,0 +1,11 @@
+[[snippets]]
+prefix = "rtfc"
+scope = ["typescriptreact"]
+body = "import { FC } from 'react';\n\ninterface $1Props {};\n\nconst $1: FC<$1Props> = () => {\n\treturn (\n\t\t<div>\n\t\t\t$0\n\t\t</div>\n\t);\n};\n\nexport default $1;"
+description = "React Typescript functional component"
+
+[[snippets]]
+prefix = "rntfc"
+scope = ["typescriptreact"]
+body = "import React, { FC } from 'react';\nimport { View, StyleSheet } from 'react-native';\n\ninterface $1Props {};\n\nconst $1: FC<$1Props> = () => {\n\treturn(\n\t\t<View style={styles.container}>\n\t\t\t$0\n\t\t</View>\n\t);\n};\n\nconst styles = StyleSheet.create({\n\tcontainer: {}\n});\n\nexport default $1;"
+description = "React Native Typescript functional component"

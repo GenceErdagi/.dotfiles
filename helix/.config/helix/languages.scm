@@ -29,8 +29,10 @@
 ;; Steel LSP Configuration (from previous step)
 (define-lsp "steel-language-server" (command "steel-language-server") (args '()))
 
-;; -----------------------------------------------------------------------------
-;; Language Definitions
+;; Simple Completion Language Server (scls) for snippets
+(define-lsp "scls"
+  (command "simple-completion-language-server"))
+
 ;; -----------------------------------------------------------------------------
 
 (define-language "html"
@@ -50,7 +52,7 @@
 
 (define-language "tsx"
   (auto-format #t)
-  (language-servers '("typescript-language-server" "vscode-eslint-language-server" "emmet-ls" "tailwindcss-ls" "codebook"))
+  (language-servers '("scls" "typescript-language-server" "vscode-eslint-language-server" "emmet-ls" "tailwindcss-ls" "codebook"))
   (formatter (command "prettier") (args '("--parser" "typescript")))
   (debugger (hash "name" "js-debug" "transport" "stdio" "command" "js-debug-adapter" "templates" '())))
 
