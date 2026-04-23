@@ -1,10 +1,26 @@
 def --env zjide [...args] {
-    let folder_name = ($env.PWD | path basename)
-    zellij --layout ide attach --create $folder_name ...$args
+    let folder_name = $env.PWD | str kebab-case
+    let layout = $env.HOME | path join ".config/zellij/layouts/ide.kdl"
+    if $env.ZELLIJ? == "0" {
+        zellij action override-layout $layout
+        return
+    }
+    let session_names = (zellij ls -sn | lines )
+
+    if $folder_name not-in $session_names {
+        zellij attach --create-background $folder_name ...$args
+    }
+    zellij --session $folder_name action override-layout $layout
+    zellij attach $folder_name
 }
 
-def zellijj-ls [] {
-    zellij ls | ansi strip | lines | split column -c " " name status
+def z [...args] {
+    let folder_name = $env.PWD | path basename
+    zellij attach --create $folder_name ...$args
+}
+
+def zellij-ls [] {
+    zellij ls | ansi strip | lines | split column " " name status
 }
 
 def zellij-cleanup [
@@ -31,4 +47,4 @@ def zellij-cleanup [
 
 alias zj = zjide
 alias zjc = zellij-cleanup
-alias zjls = zellijj-ls 
+alias zjls = zellij-ls
