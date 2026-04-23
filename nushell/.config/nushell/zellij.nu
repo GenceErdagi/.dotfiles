@@ -2,11 +2,10 @@ def --env zjide [...args] {
     let folder_name = $env.PWD | str kebab-case
     let layout = $env.HOME | path join ".config/zellij/layouts/ide.kdl"
     if $env.ZELLIJ? == "0" {
-        zellij action override-layout $layout
+        zellij action override-layout --apply-only-to-active-tab $layout
         return
     }
-    let session_names = (zellij ls -sn | lines )
-
+    let session_names = (zellij ls -sn | lines -s) 
     if $folder_name not-in $session_names {
         zellij attach --create-background $folder_name ...$args
     }
