@@ -36,9 +36,7 @@ tab = "all"
 C-b = ":bc"
 C-r = ":scooter"
 esc = ["collapse_selection","keep_primary_selection"]
-A-F = ":format"
 Y = ":clipboard-yank"
 
 [keys.select]
-A-F = ":format"
 Y = ":clipboard-yank"
