@@ -85,7 +85,8 @@
 
 (define-language "scheme"
   (language-servers '("steel-language-server"))
-  (file-types '("scm")))
+  (file-types '("scm"))
+  (diagnostic-severity "hint"))
 
 (define-lsp "clangd"
   (command "clangd")
