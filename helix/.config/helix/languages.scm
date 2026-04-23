@@ -84,7 +84,8 @@
   (language-servers '()))
 
 (define-language "scheme"
-                 (language-servers '("steel-language-server")))
+  (language-servers '("steel-language-server"))
+  (file-types '("scm")))
 
 (define-lsp "clangd"
   (command "clangd")
