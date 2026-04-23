@@ -1,4 +1,6 @@
 (require "helix/configuration.scm")
+(require (prefix-in helix. "helix/commands.scm"))
+(require (prefix-in helix.static. "helix/static.scm"))
 
 ;; -----------------------------------------------------------------------------
 ;; General Language Servers
@@ -79,7 +81,7 @@
   (formatter (command "bash") (args '("-c" "npx stylelint --fix 2>&1 | prettier --parser css "))))
 
 (define-language "markdown"
-  (language-servers '("codebook")))
+  (language-servers '()))
 
 (define-language "scheme"
                  (language-servers '("steel-language-server")))
