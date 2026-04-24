@@ -5,7 +5,7 @@ def --env zjide [...args] {
         zellij action override-layout --apply-only-to-active-tab $layout
         return
     }
-    let session_names = (zellij ls -sn | lines -s) 
+    let session_names = (zellij ls -s -n err> /dev/null | lines -s) 
     if $folder_name not-in $session_names {
         zellij attach --create-background $folder_name ...$args
     }
