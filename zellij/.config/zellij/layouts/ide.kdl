@@ -19,7 +19,7 @@ layout {
             }
             pane split_direction="horizontal" {
                 pane command="hx" name="Editor"
-                pane name="Terminal" size=1
+                pane command="nu" name="Terminal" size=1
             }
         }
     }
