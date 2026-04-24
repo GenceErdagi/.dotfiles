@@ -34,9 +34,18 @@ tab = "all"
 
 [keys.normal]
 C-b = ":bc"
-C-r = ":scooter"
 esc = ["collapse_selection","keep_primary_selection"]
 Y = ":clipboard-yank"
 
 [keys.select]
 Y = ":clipboard-yank"
+
+[keys.normal.space]
+t = ":terminal-focus"
+e = ":sidebar-focus"
+f = "file_explorer"
+
+[keys.select.space]
+t = ":terminal-focus"
+e = ":sidebar-focus"
+f = "file_explorer"
