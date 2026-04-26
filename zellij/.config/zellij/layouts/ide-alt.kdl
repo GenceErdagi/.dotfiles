@@ -1,0 +1,77 @@
+layout {
+    // ---------------------------------------------------
+    // Template with compact-bar
+    // ---------------------------------------------------
+    default_tab_template {
+        children
+        pane size=1 borderless=true {
+            plugin location="zellij:compact-bar"
+        }
+    }
+
+    // ---------------------------------------------------
+    // Initial IDE Tab
+    // ---------------------------------------------------
+    tab name="IDE" focus=true {
+        pane split_direction="vertical" {
+            pane split_direction="horizontal" {
+                pane command="hx" name="Editor"
+                pane command="nu" name="Terminal" size=1
+            }
+            pane size="15%" command="env" name="File-Explorer" focus=true {
+                args "YAZI_IDE_SIDEBAR=1" "nu" "/home/gence/.config/nushell/scripts/yazi-zx.nu"
+            }
+        }
+    }
+
+    // // ---------------------------------------------------
+    // // IDE-Specific Tiled Swap Layouts
+    // // ---------------------------------------------------
+    // swap_tiled_layout name="BASE" {
+    //     tab {
+    //         pane split_direction="vertical" {
+    //             pane name="File-Explorer" size="15%"
+    //             pane split_direction="horizontal" {
+    //                 pane { children; }
+    //                 pane name="Terminal" size="25%"
+    //             }
+    //         }
+    //     }
+    // }
+
+    swap_tiled_layout name="no_sidebar" {
+        tab {
+            pane split_direction="vertical" {
+                pane split_direction="horizontal" {
+                    pane { children; }
+                    pane name="Terminal" size="20%"
+                }
+                pane name="File-Explorer" size=1
+            }
+        }
+    }
+
+    swap_tiled_layout name="terminal" {
+        tab {
+            pane split_direction="vertical" {
+                pane split_direction="horizontal" {
+                    pane { children; }
+                    pane name="Terminal" size="20%"
+                }
+                pane name="File-Explorer" size="15%"
+            }
+        }
+    }
+
+    swap_tiled_layout name="zen" {
+        tab {
+            pane split_direction="vertical" {
+                pane split_direction="horizontal" {
+                    pane { children; }
+                    pane name="Terminal" size=1
+                }
+                pane name="File-Explorer" size=1
+            }
+        }
+    }
+}

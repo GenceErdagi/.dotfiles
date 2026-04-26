@@ -2,7 +2,6 @@
 $env.EDITOR = 'hx'
 $env.COLORTERM = 'xterm-256color'
 $env.BUN_INSTALL = ($env.HOME | path join ".bun")
-$env.TERM = "xterm-kitty yazi"
 $env.PATH = ($env.PATH | split row (char esep) | prepend [
     ($env.HOME | path join "bin"),
     ($env.HOME | path join ".local/bin"),
