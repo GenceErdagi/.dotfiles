@@ -1,0 +1,41 @@
+theme = "ashen"
+
+[editor]
+true-color = true
+line-number = "relative"
+mouse = true
+bufferline = "always"
+color-modes = true
+enable-steel = true
+
+[editor.soft-wrap]
+enable = true
+max-wrap = 25
+max-indent-retain = 0
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.statusline]
+left = ["mode", "spinner", "selections", "primary-selection-length"]
+center = ["file-name", "read-only-indicator", "file-modification-indicator", "version-control"]
+right = ["diagnostics", "workspace-diagnostics", "file-encoding", "file-line-ending", "file-type", "position", "position-percentage"]
+separator = "│"
+
+[editor.indent-guides]
+render = true
+character = "│"
+skip-levels = 1
+
+[editor.whitespace.render]
+tab = "all"
+
+[keys.normal]
+C-b = ":bc"
+esc = ["collapse_selection","keep_primary_selection"]
+Y = ":clipboard-yank"
+
+[keys.select]
+Y = ":clipboard-yank"

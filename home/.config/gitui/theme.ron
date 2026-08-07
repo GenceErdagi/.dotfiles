@@ -1,0 +1,28 @@
+// Ashen theme for gitui
+(
+    selected_tab: Some("#C4693D"),
+    command_fg: Some("#d5d5d5"),
+    selection_bg: Some("#323232"),
+    selection_fg: Some("#e5e5e5"),
+    use_selection_fg: Some(true),
+    cmdbar_bg: Some("#212121"),
+    cmdbar_extra_lines_bg: Some("#212121"),
+    disabled_fg: Some("#535353"),
+    diff_line_add: Some("#4A8B8B"),
+    diff_line_delete: Some("#C53030"),
+    diff_file_added: Some("#4A8B8B"),
+    diff_file_removed: Some("#DF6464"),
+    diff_file_moved: Some("#E49A44"),
+    diff_file_modified: Some("#D87C4A"),
+    commit_hash: Some("#E5A72A"),
+    commit_time: Some("#949494"),
+    commit_author: Some("#d5d5d5"),
+    danger_fg: Some("#C53030"),
+    push_gauge_bg: Some("#C4693D"),
+    push_gauge_fg: Some("#121212"),
+    tag_fg: Some("#E49A44"),
+    branch_fg: Some("#4A8B8B"),
+    line_break: Some("¶"),
+    block_title_focused: Some("#C4693D"),
+    syntax: Some("base16-eighties.dark")
+)

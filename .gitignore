@@ -1,0 +1,15 @@
+# Secrets — never commit these
+home/.config/gh/
+
+# Shell caches
+.zcompdump*
+*.zwc
+
+# App artifacts
+node_modules/
+home/.config/opencode/package*.json
+home/.config/opencode/bun.lock
+home/.config/opencode/.gitignore
+
+# Not managed here
+home/.config/nextjs-nodejs/

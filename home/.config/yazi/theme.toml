@@ -1,0 +1,21 @@
+[flavor]
+dark = "ashen"
+
+[git]
+# Ashen Color Mapping
+modified  = { fg = "#e5a72a" } # Ashen Yellow (emphasis_0)
+added     = { fg = "#4a8b8b" } # Ashen Teal (emphasis_3)
+untracked = { fg = "#b4b4b4" } # Ashen Base Grey (text_unselected base)
+ignored   = { fg = "#737373" } # Ashen Dark Grey (ribbon_unselected background)
+deleted   = { fg = "#c53030" } # Ashen Red (emphasis_1)
+updated   = { fg = "#c4693d" } # Ashen Orange (emphasis_2)
+clean     = { fg = "#4a8b8b" } # Ashen Teal (emphasis_3)
+unknown   = { fg = "#b4b4b4" } # Ashen Base Grey
+
+# Text signs (you can replace these with Nerd Font icons if you prefer, e.g., "󰏫", "󰐕", "✔")
+modified_sign  = "M"
+added_sign     = "A"
+untracked_sign = "?"
+ignored_sign   = "I"
+deleted_sign   = "D"
+updated_sign   = "U"
